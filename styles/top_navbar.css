@@ -1,0 +1,63 @@
+:root {
+  --faint_white: #b3b3b3;
+}
+
+.top_nav {
+  padding: 10px 30px;
+}
+
+.top_nav>nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.top_nav_left {
+  display: flex;
+  gap: 10px;
+}
+
+.top_nav_left>div {
+  fill: var(--faint_white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.top_nav_left>div:hover {
+  fill: white;
+  transition: fill ease-in-out 250ms;
+}
+
+.top_nav_right {
+  display: flex;
+  gap: 30px;
+  color: var(--faint_white);
+}
+
+.top_nav_right p {
+  margin: 0;
+}
+
+.top_nav_right>div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.top_nav_right>div:hover {
+  position: relative;
+  transform: scale(1.05);
+  color: white;
+  transition: ease 90ms
+}
+
+.top_nav_right>div:last-child {
+  background-color: white;
+  color: black;
+  padding: 0 25px;
+  border-radius: 500px;
+}

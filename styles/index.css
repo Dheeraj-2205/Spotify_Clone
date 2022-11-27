@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+:root {
+  --background-base: #121212;
+  --background-noise: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjc1IiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGZpbHRlcj0idXJsKCNhKSIgb3BhY2l0eT0iLjA1IiBkPSJNMCAwaDMwMHYzMDBIMHoiLz48L3N2Zz4=);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  background-color: black;
+  color: white;
+  height: 100vh;
+  margin: 0;
+}
+
+a[href="index.html"] svg {
+  fill: white;
+}
+
+a[href="index.html"] p {
+  color: white;
+}
+
+.grid_container {
+  display: grid;
+  grid-template-areas:
+    "page_left page_top"
+    "page_left page_right"
+    "page_bottom page_bottom";
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr;
+  height: 100%;
+  min-height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+.top_nav {
+  grid-area: page_top;
+  background-color: #000000a0;
+}
+
+.left_nav {
+  grid-area: page_left;
+}
+
+.page_bottom {
+  grid-area: page_bottom;
+}
+
+.page_right {
+  grid-area: page_right;
+  background-color: #00000000;
+}
+
+.idk {
+  position: relative;
+}
+
+.background_color {
+  background-image: linear-gradient(#2d2d2d , #000000);
+  top: 0;
+  position: absolute;
+  -webkit-transition: background 1s ease;
+  transition: background 1s ease;
+  width: 100%;
+  z-index: -1;
+  height: 350px;
+}
+
+.logged_out {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+  background: linear-gradient(90deg, #af2896, #509bf5);
+}
+
+.page_bottom_left>p {
+  margin: 5px;
+  font-size: 14px;
+}
+
+.page_bottom_left>p:first-child {
+  font-weight: 400;
+}
+
+.page_bottom_right>button {
+  padding: 15px 25px;
+  border-radius: 500px;
+  font-weight: bold;
+  font-size: 15px;
+  background-color: white;
+  border: none;
+}
+
+.page_bottom_right>button:hover {
+  position: relative;
+  transform: scale(1.05);
+  transition: ease 50ms;
+}

@@ -1,0 +1,97 @@
+:root {
+  --faint_white: #b3b3b3;
+}
+
+.left_nav {
+  width: 400px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.left_nav>nav {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  font-size: 13px;
+}
+
+.left_nav a {
+  text-decoration: none;
+  color: var(--faint_white);
+}
+
+.left_nav>nav a p:hover {
+  color: white;
+  transition: color ease-in-out 250ms;
+}
+
+.left_nav_banner {
+  width: 130px;
+}
+
+.left_nav_list_one {
+  display: flex;
+  flex-direction: column;
+}
+
+.left_nav_list_one svg {
+  fill: var(--faint_white);
+}
+
+.left_nav_list_one svg:hover {
+  fill: white;
+  transition: fill ease-in-out 250ms;
+}
+
+.left_nav_list_one>div>a,
+.left_nav_list_two>div>a {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.left_nav_icon_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon_special_container {
+  background-color: var(--faint_white);
+  width: 23px;
+  height: 23px;
+  margin: 5px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+}
+
+.icon_special_container:hover {
+  background-color: white;
+  transition: background-color ease-in-out 250ms;
+}
+
+.liked_songs {
+  fill: var(--faint_white);
+  background: linear-gradient(135deg,#2e00b9,#a3a7a5)
+}
+
+.liked_songs:hover {
+  fill: white;
+  background: linear-gradient(135deg,#3e07e5,#c8e6d7);
+  transition: ease-in-out 250ms;
+}
+
+.left_nav_bottom {
+  display: flex;
+  flex-direction: column;
+  font-size: 10px;
+  gap: 15px;
+}
+
+.left_nav_bottom>a:hover {
+  text-decoration: underline;
+}
