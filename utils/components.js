@@ -142,4 +142,42 @@ function loggedOutBottom() {
   `;
 }
 
-export { left_nav, top_nav, loggedOutBottom };
+async function getPlaylists(type, limit = 7) {
+  let response = await fetch(`http://localhost:3000/playlists?type=${type}&_limit=${limit}`);
+  let data = await response.json();
+  return data;
+}
+
+function displayPlaylist (data, parent) {
+  parent.innerHTML = null;
+  data.forEach(element => {
+    const playlist_tab = document.createElement('div');
+    const image_contaier = document.createElement('div');
+    const desc_container = document.createElement('div');
+    const image = document.createElement('img');
+    const play_btn = document.createElement('button');
+    const title = document.createElement('p');
+    const description = document.createElement('p');
+
+    image.src = element.background;
+    title.textContent = element.title;
+    description.textContent = element.description;
+    play_btn.innerHTML = `<svg role="img" height="24" width="24" aria-hidden="true" viewBox="0 0 24 24">
+    <path
+      d="M7.05 3.606l13.49 7.788a.7.7 0 010 1.212L7.05 20.394A.7.7 0 016 19.788V4.212a.7.7 0 011.05-.606z">
+    </path>
+  </svg>`;
+
+    playlist_tab.setAttribute('class','playlist_tab');
+    image_contaier.setAttribute('class', 'mini_background_container');
+    desc_container.setAttribute('class', 'short_desc_container');
+
+
+    desc_container.append(title, description);
+    image_contaier.append(image, play_btn);
+    playlist_tab.append(image_contaier, desc_container);
+    parent.append(playlist_tab);
+  });
+}
+
+export { left_nav, top_nav, loggedOutBottom, getPlaylists, displayPlaylist };

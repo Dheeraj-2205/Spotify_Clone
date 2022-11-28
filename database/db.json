@@ -1,0 +1,173 @@
+{
+  "songs": {},
+  "playlists": [
+    {
+      "title": "Today's Top Hits",
+      "description": "Taylor Swift is on top of the Hottest 50",
+      "type": "default",
+      "background": "https://i.scdn.co/image/ab67706f0000000255d4466ee6bb4a1e484f4588"
+    },
+    {
+      "title": "RapCaviar",
+      "description": "Music from Drake, 21 Savage, Lil Uzi Vert and more.",
+      "type": "default",
+      "background": "https://i.scdn.co/image/ab67706f00000002a7c87745d3b0f192d0e23556"
+    },
+    {
+      "title": "All Out 2010s",
+      "description": "The biggest songs of the 2010s",
+      "type": "default",
+      "background": "https://i.scdn.co/image/ab67706f000000026532a0c7c8aa3e40a5851d8c"
+    },
+    {
+      "title": "Rock Classics",
+      "description": "Rock legends & epic songs that continue to inspire generations. Cover: Guns N' Roses",
+      "type": "default",
+      "background": "https://i.scdn.co/image/ab67706f00000002b5d03b4eccf9aa6b902d0666"
+    },
+    {
+      "title": "Chill Hits",
+      "description": "Kick back to the best new and recent chill hits.",
+      "type": "default",
+      "background": "https://i.scdn.co/image/ab67706f00000002bf2dc6fe9c88fc785f9c3735"
+    },
+    {
+      "title": "Viva Latino",
+      "description": "Today's top Latin hits, elevando nuestra música. Cover: Paulo Londra",
+      "type": "default",
+      "background": "https://i.scdn.co/image/ab67706f000000021b2ec90f8b93523933399657"
+    },
+    {
+      "title": "Mega Hit Mix",
+      "description": "A mega mix of 75 favorites from the last few years!",
+      "type": "default",
+      "background": "https://i.scdn.co/image/ab67706f00000002fecb9c578f38ebc8eef432cc"
+    },
+    {
+      "title": "Peaceful Piano",
+      "description": "Relax and indulge with beautiful piano pieces",
+      "type": "focus",
+      "background": "https://i.scdn.co/image/ab67706f00000002ca5a7517156021292e5663a6"
+    },
+    {
+      "title": "Deep Focus",
+      "description": "Keep calm and focus with ambient and post-rock music.",
+      "type": "focus",
+      "background": "https://i.scdn.co/image/ab67706f000000025551996f500ba876bda73fa5"
+    },
+    {
+      "title": "Instrumental Study",
+      "description": "Focus with soft study music in the background.",
+      "type": "focus",
+      "background": "https://i.scdn.co/image/ab67706f000000025d87659dcadef82dd0e73f56"
+    },
+    {
+      "title": "Chill lofi study beats",
+      "description": "The perfect study beats. Find your focus, crush your productivity.",
+      "type": "focus",
+      "background": "https://i.scdn.co/image/ab67706f000000025b0a7b8408322a3b9ed15e1e"
+    },
+    {
+      "title": "Coding Mode",
+      "description": "Dedicated to all the programmers out there.",
+      "type": "focus",
+      "background": "https://i.scdn.co/image/ab67706f00000002863b311d4b787ed621f7e696"
+    },
+    {
+      "title": "Workday Lounge",
+      "description": "Lounge and chill out music for your workday.",
+      "type": "focus",
+      "background": "https://i.scdn.co/image/ab67706f00000002e435ce0a86a8b9dc24527618"
+    },
+    {
+      "title": "Beats to think to",
+      "description": "Focus with deep techno and tech house.",
+      "type": "focus",
+      "background": "https://i.scdn.co/image/ab67706f0000000296e08a91ef3c7a6e7bfaa9a6"
+    },
+    {
+      "title": "Mood booster",
+      "description": "Get happy with today's dose of feel-good songs!.",
+      "type": "mood",
+      "background": "https://i.scdn.co/image/ab67706f00000002bd0e19e810bb4b55ab164a95"
+    },
+    {
+      "title": "Feelin' Good",
+      "description": "Feel good with this positively timeless playlist!",
+      "type": "mood",
+      "background": "https://i.scdn.co/image/ab67706f0000000213a02d059c0479e65a850267"
+    },
+    {
+      "title": "Dark & Stormy",
+      "description": "Beautifully dark, dramatic tracks.",
+      "type": "mood",
+      "background": "https://i.scdn.co/image/ab67706f00000002a6e2870c97bde5e2719c20b8"
+    },
+    {
+      "title": "Feel Good Piano",
+      "description": "Happy vibes for an upbeat morning.",
+      "type": "mood",
+      "background": "https://i.scdn.co/image/ab67706f00000002f68ba9973e4f1f0cdf268ccd"
+    },
+    {
+      "title": "Feelin' Myself",
+      "description": "The hip-hop playlist that's a whole mood. Art By Laci Jordan; Cover: Saweetie",
+      "type": "mood",
+      "background": "https://i.scdn.co/image/ab67706f000000025a82853306e0a01ea4d7895b"
+    },
+    {
+      "title": "Sad hour",
+      "description": "Somehow heartbreak feels good in a place like this. Cover: Taylor Swift",
+      "type": "mood",
+      "background": "https://i.scdn.co/image/ab67706f00000002c0d9b0a600352ab5d14abe70"
+    },
+    {
+      "title": "Chill Tracks",
+      "description": "Softer kinda dance",
+      "type": "mood",
+      "background": "https://i.scdn.co/image/ab67706f00000002d2bb7ed49c04499432b38e11"
+    },
+    {
+      "title": "Start Nowhere",
+      "description": "Sam Hunt",
+      "type": "popular_new",
+      "background": "https://i.scdn.co/image/ab67616d00001e0277fe30c4a9851862d71f5503"
+    },
+    {
+      "title": "This is What I Mean",
+      "description": "Stormzy",
+      "type": "popular_new",
+      "background": "https://i.scdn.co/image/ab67616d00001e02df075bcefe46d7ca94692651"
+    },
+    {
+      "title": "Love Sux(Deluxe)",
+      "description": "Avril Lavigne",
+      "type": "popular_new",
+      "background": "https://i.scdn.co/image/ab67616d00001e021e0668d9ae6539617476416b"
+    },
+    {
+      "title": "Dreamers [Music from the FIFA World Cup Qatar 2022 Official Soundtrack]",
+      "description": "Jung Kook, BTS",
+      "type": "popular_new",
+      "background": "https://i.scdn.co/image/ab67616d00001e02ef57183066d6cac0cabb85c6"
+    },
+    {
+      "title": "Frío",
+      "description": "Nicki Nicole",
+      "type": "popular_new",
+      "background": "https://i.scdn.co/image/ab67616d00001e02f09245896b985517ee014cdc"
+    },
+    {
+      "title": "3860",
+      "description": "Quando Rondo, YoungBoy Never Broke Again",
+      "type": "popular_new",
+      "background": "https://i.scdn.co/image/ab67616d00001e0280728433011301114b6371ad"
+    },
+    {
+      "title": "Taurus (feat. Naomi Wild) [From The Motion Picture Taurus]",
+      "description": "Machine Gun Kelly",
+      "type": "popular_new",
+      "background": "https://i.scdn.co/image/ab67616d00001e027c497fe3dc3a9370c50a54d0"
+    }
+  ]
+}

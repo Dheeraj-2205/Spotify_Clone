@@ -1,8 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 :root {
-  --background-base: #121212;
-  --background-noise: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjc1IiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGZpbHRlcj0idXJsKCNhKSIgb3BhY2l0eT0iLjA1IiBkPSJNMCAwaDMwMHYzMDBIMHoiLz48L3N2Zz4=);
+  --background-base: #2d2d2d;
+  --faint_white: #b3b3b3;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #00000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(65, 65, 65);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 * {
@@ -51,19 +67,29 @@ a[href="index.html"] p {
 
 .page_bottom {
   grid-area: page_bottom;
+  width: 100%;
 }
 
 .page_right {
   grid-area: page_right;
   background-color: #00000000;
+  width: 100%;
+  height: calc(100vh - 140px);
+  overflow-y: scroll;
+  z-index: -1;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .idk {
   position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .background_color {
-  background-image: linear-gradient(#2d2d2d , #000000);
+  background-image: linear-gradient(var(--background-base), #000000);
   top: 0;
   position: absolute;
   -webkit-transition: background 1s ease;
@@ -103,4 +129,93 @@ a[href="index.html"] p {
   position: relative;
   transform: scale(1.05);
   transition: ease 50ms;
+}
+
+.spotify_playlists {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  font-weight: bolder;
+  font-size: 14px;
+}
+
+.header>div:last-child {
+  color: var(--faint_white);
+}
+
+.header>div:last-child>p {
+  margin: 0;
+  margin-top: 25px;
+}
+
+.playlist_container {
+  display: flex;
+  width: 100%;
+  padding: 0 10px;
+  gap: 24px;
+}
+
+.playlist_tab {
+  background-color: #161616d0;
+  padding: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.mini_background_container {
+  position: relative;
+}
+
+.mini_background_container>img {
+  display: block;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.mini_background_container>button {
+  position: absolute;
+  right: 5px;
+  bottom: -20px;
+  background-color: #2fff71;
+  border: none;
+  border-radius: 500px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.playlist_tab:hover button {
+  display: flex;
+  bottom: 10px;
+}
+
+.short_desc_container {
+  max-width: 150px;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 90px;
+  line-height: 20px;
+}
+
+.short_desc_container>p:first-child {
+  font-size: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  max-height: 19px;
+}
+
+.short_desc_container>p:last-child {
+  color: var(--faint_white);
+  font-size: 12px;
+  margin-bottom: 0;
 }
