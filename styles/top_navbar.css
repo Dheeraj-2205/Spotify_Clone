@@ -1,0 +1,165 @@
+:root {
+  --faint_white: #b3b3b3;
+}
+
+.top_nav {
+  padding: 10px 30px;
+}
+
+.top_nav>nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.top_nav_left {
+  display: flex;
+  gap: 10px;
+}
+
+.top_nav_left>div {
+  fill: var(--faint_white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.top_nav_left>div:hover {
+  fill: white;
+  transition: fill ease-in-out 250ms;
+}
+
+.top_nav_right {
+  display: flex;
+  gap: 30px;
+  color: var(--faint_white);
+  position: relative;
+  align-items: center;
+}
+
+.top_nav_right p {
+  margin: 0;
+}
+
+.signup_btn, .login_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.signup_btn:hover {
+  position: relative;
+  transform: scale(1.05);
+  color: white;
+  transition: ease 90ms;
+}
+
+.login_btn {
+  background-color: white;
+  color: black;
+  padding: 0 25px;
+  border-radius: 500px;
+  padding: 10px 20px;
+}
+
+.login_btn:hover, .upgrade_btn:hover {
+  position: relative;
+  transform: scale(1.05);
+  transition: ease 90ms
+}
+
+.upgrade_btn {
+  border: 1px solid white;
+  border-radius: 500px;
+  padding: 0px 20px;
+  color: white;
+  height: 30px;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user_pop {
+  display: flex;
+  gap: 10px;
+  border-radius: 500px;
+  padding-right: 20px;
+  background-color: black;
+  position: relative;
+  color: white;
+}
+
+.user_pop>button {
+  border-radius: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  background-color: #5b5b5b;
+  fill: white;
+}
+
+.user_pop>div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user_pop:hover {
+  background-color: #2d2d2d;
+}
+
+.hover_name {
+  position: absolute;
+  bottom: -35px;
+  left: 30px;
+  background-color: black;
+  padding: 5px;
+  border-radius: 5px;
+  visibility: hidden;
+  transition: visibility ease 100ms;
+}
+
+.user_pop:hover .hover_name {
+  visibility: visible;
+  transition: visibility ease 100ms;
+}
+
+#user_options {
+  visibility: hidden;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 200px;
+  right: 0;
+  top: 40px;
+  z-index: 1;
+  font-size: 13px;
+  font-weight: 300;
+  background-color: #282828;
+  border-radius: 3px;
+  box-shadow: 0px 0px 5px 0px rgb(24, 24, 24);
+  fill: white;
+  padding: 5px;
+}
+
+#user_options>div {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  width: 100%;
+  justify-content: space-between;
+} 
+
+#user_options>div:hover {
+  background-color: #555555;
+}
+
+#user_options>div:last-child {
+  border-top: 1px solid rgb(77, 77, 77);
+}
