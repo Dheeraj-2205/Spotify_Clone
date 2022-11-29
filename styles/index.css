@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 :root {
-  --background-base: #2d2d2d;
   --faint_white: #b3b3b3;
 }
 
@@ -63,6 +62,7 @@ a[href="index.html"] p {
 
 .left_nav {
   grid-area: page_left;
+  width: 390px;
 }
 
 .page_bottom {
@@ -76,7 +76,6 @@ a[href="index.html"] p {
   width: 100%;
   height: calc(100vh - 140px);
   overflow-y: scroll;
-  z-index: -1;
   padding: 0 20px;
   display: flex;
   flex-direction: column;
@@ -89,11 +88,9 @@ a[href="index.html"] p {
 }
 
 .background_color {
-  background-image: linear-gradient(var(--background-base), #000000);
+  background-image: linear-gradient(#2d2d2d, #000000);
   top: 0;
   position: absolute;
-  -webkit-transition: background 1s ease;
-  transition: background 1s ease;
   width: 100%;
   z-index: -1;
   height: 350px;
@@ -155,7 +152,8 @@ a[href="index.html"] p {
 }
 
 .playlist_container {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
   width: 100%;
   padding: 0 10px;
   gap: 24px;
@@ -218,4 +216,141 @@ a[href="index.html"] p {
   color: var(--faint_white);
   font-size: 12px;
   margin-bottom: 0;
+}
+
+.login_pop {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #000000e4;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.login_pop_container {
+  position: relative;
+  border-radius: 7px;
+  display: flex;
+  padding: 70px;
+  gap: 50px;
+  background-image: linear-gradient(#720000d6, #1e1e1e);
+}
+
+.login_pop_desc {
+  text-align: center;
+  max-width: 300px;
+}
+
+.login_pop_desc>div:first-child {
+  font-size: 25px;
+  line-height: 40px;
+  font-weight: bolder;
+  word-wrap: break-word;
+}
+
+.login_pop_desc>div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+#playlist_background {
+  border-radius: 10px;
+}
+
+#popup_signup {
+  background-color: #2fff71;
+  padding: 10px 20px;
+  font-size: 17px;
+  font-weight: 400;
+  border-radius: 500px;
+  cursor: pointer;
+  border: none;
+}
+
+#popup_download {
+  background-color: #00000000;
+  padding: 10px 30px;
+  font-size: 17px;
+  font-weight: 400;
+  border-radius: 500px;
+  color: white;
+  border: 1px solid white;
+  cursor: pointer;
+}
+
+.login_pop_desc>div:last-child {
+  margin-top: 50px;
+  font-size: 12px;
+  color: var(--faint_white);
+}
+
+.login_pop_desc span {
+  color: white;
+}
+
+#close_btn {
+  position: absolute;
+  bottom: -40px;
+  left: 380px;
+  background-color: black;
+  color: var(--faint_white);
+  font-size: 13px;
+  font-weight: bolder;
+}
+
+#close_btn:hover {
+  color: white;
+  transform: scale(1.02);
+}
+
+@media (max-width : 1670px) {
+  .playlist_container {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .playlist_tab:nth-child(7) {
+    display: none;
+  }
+}
+
+@media (max-width : 1460px) {
+  .playlist_container {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .playlist_tab:nth-child(6) {
+    display: none;
+  }
+}
+
+@media (max-width : 1300px) {
+  .playlist_container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .playlist_tab:nth-child(5) {
+    display: none;
+  }
+  .left_nav {
+    width: 200px;
+  }
+}
+
+@media (max-width : 900px) {
+  .page_right {
+    height: calc(100vh - 155px);
+  }
+  .left_nav {
+    width: 60px;
+  }
+  .left_nav_title * {
+    color: #00000000 !important;
+  }
+  .left_nav_banner {
+    z-index: -1;
+    position: relative;
+    left: -7px;
+  }
 }

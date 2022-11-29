@@ -115,11 +115,42 @@ function top_nav() {
       </div>
     </section>
     <section class="top_nav_right">
-      <div id="signup_btn">
+      <div class="signup_btn">
         <p>Sign up</p>
       </div>
-      <div id="login_btn">
+      <div class="login_btn" id="login_btn">
         <p>Log in</p>
+      </div>
+    </section>
+  </nav>
+  `;
+}
+
+function top_nav_login() {
+  return `
+  <nav>
+    <section class="top_nav_left">
+      <div>
+        <svg role="img" height="24" width="24" aria-hidden="true" viewBox="0 0 24 24">
+          <path
+            d="M15.957 2.793a1 1 0 010 1.414L8.164 12l7.793 7.793a1 1 0 11-1.414 1.414L5.336 12l9.207-9.207a1 1 0 011.414 0z">
+          </path>
+        </svg>
+      </div>
+      <div>
+        <svg role="img" height="24" width="24" aria-hidden="true" viewBox="0 0 24 24">
+          <path
+            d="M8.043 2.793a1 1 0 000 1.414L15.836 12l-7.793 7.793a1 1 0 101.414 1.414L18.664 12 9.457 2.793a1 1 0 00-1.414 0z">
+          </path>
+        </svg>
+      </div>
+    </section>
+    <section class="top_nav_right">
+      <div class="upgrade_btn">
+        <p>Upgrade</p>
+      </div>
+      <div class="user_pop" id="user_pop">
+        <p id="user_name">test</p>
       </div>
     </section>
   </nav>
@@ -142,42 +173,10 @@ function loggedOutBottom() {
   `;
 }
 
-async function getPlaylists(type, limit = 7) {
+async function getPlaylists(type, limit) {
   let response = await fetch(`http://localhost:3000/playlists?type=${type}&_limit=${limit}`);
   let data = await response.json();
   return data;
 }
 
-function displayPlaylist (data, parent) {
-  parent.innerHTML = null;
-  data.forEach(element => {
-    const playlist_tab = document.createElement('div');
-    const image_contaier = document.createElement('div');
-    const desc_container = document.createElement('div');
-    const image = document.createElement('img');
-    const play_btn = document.createElement('button');
-    const title = document.createElement('p');
-    const description = document.createElement('p');
-
-    image.src = element.background;
-    title.textContent = element.title;
-    description.textContent = element.description;
-    play_btn.innerHTML = `<svg role="img" height="24" width="24" aria-hidden="true" viewBox="0 0 24 24">
-    <path
-      d="M7.05 3.606l13.49 7.788a.7.7 0 010 1.212L7.05 20.394A.7.7 0 016 19.788V4.212a.7.7 0 011.05-.606z">
-    </path>
-  </svg>`;
-
-    playlist_tab.setAttribute('class','playlist_tab');
-    image_contaier.setAttribute('class', 'mini_background_container');
-    desc_container.setAttribute('class', 'short_desc_container');
-
-
-    desc_container.append(title, description);
-    image_contaier.append(image, play_btn);
-    playlist_tab.append(image_contaier, desc_container);
-    parent.append(playlist_tab);
-  });
-}
-
-export { left_nav, top_nav, loggedOutBottom, getPlaylists, displayPlaylist };
+export { left_nav, top_nav, loggedOutBottom, getPlaylists };
