@@ -1,22 +1,51 @@
-import { left_nav, top_nav, loggedOutBottom, getPlaylists } from "../utils/components.js";
-
-if (!localStorage.getItem('spotify_login_flag')) {
-  localStorage.setItem('spotify_login_flag', JSON.stringify(false));
-}
+import { left_nav, top_nav, loggedOutBottom, top_nav_login, playerBottom } from "../utils/components.js";
+import { getPlaylists } from "../utils/api_calls.js";
 
 let spotify_login_flag = JSON.parse(localStorage.getItem('spotify_login_flag'));
 const nav_left_container = document.querySelector('#left_nav');
 const nav_top_container = document.querySelector('#top_nav');
-const nav_bottom_loggedOut = document.querySelector('#page_bottom');
+const background = document.querySelectorAll('.background_color')[0];
+const nav_bottom = document.querySelector('#page_bottom');
 const playlist_one = document.querySelector('#playlist_one');
 const playlist_two = document.querySelector('#playlist_two');
 const playlist_three = document.querySelector('#playlist_three');
 const playlist_four = document.querySelector('#playlist_four');
+const TOKEN = localStorage.getItem('spotify_token') || '';
+
+const getToken = async () => {
+  const clientId = '759884d040d349538fa760f5fc776b08';
+  const clientSecret = '2515dd0e369e482da00e5304388f3812';
+
+  const result = await fetch('https://accounts.spotify.com/api/token', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization': 'Basic ' + btoa(clientId + ':' + clientSecret)
+    },
+    body: 'grant_type=client_credentials'
+  });
+
+  const data = await result.json();
+  return data.access_token;
+}
+
+const refreshToken = async () => {
+  let newToken = await getToken();
+  localStorage.setItem('spotify_token', newToken);
+  location.reload();
+}
+
+if (TOKEN.length == 0) {
+  refreshToken();
+}
 
 const signupChecks = () => {
   if (!spotify_login_flag) {
-    nav_bottom_loggedOut.innerHTML = loggedOutBottom();
+    background.setAttribute('class', 'background_color gradientOne');
+
+    nav_top_container.style.backgroundColor = "black";
     nav_top_container.innerHTML = top_nav();
+    nav_bottom.innerHTML = loggedOutBottom();
 
     let login_btn = document.querySelectorAll('.login_btn');
     let signup_btn = document.querySelectorAll('.signup_btn');
@@ -33,7 +62,21 @@ const signupChecks = () => {
       }
     });
   } else {
-    
+    background.setAttribute('class', 'background_color gradientTwo');
+    nav_top_container.innerHTML = top_nav_login();
+    nav_bottom.innerHTML = playerBottom();
+
+    const user_pop = document.querySelectorAll('.user_pop')[0];
+    const user_options = document.querySelector('#user_options');
+
+    user_pop.onclick = () => {
+      let val = user_options.style.visibility;
+      if (val == "hidden") {
+        user_options.style.visibility = "visible";
+      } else {
+        user_options.style.visibility = "hidden";
+      }
+    }
   }
 }
 
@@ -77,8 +120,8 @@ const displayPlaylist = (data, parent) => {
     const title = document.createElement('p');
     const description = document.createElement('p');
 
-    image.src = element.background;
-    title.textContent = element.title;
+    image.src = element.images[0].url;
+    title.textContent = element.name;
     description.textContent = element.description;
     play_btn.innerHTML = `<svg role="img" height="24" width="24" aria-hidden="true" viewBox="0 0 24 24">
     <path
@@ -86,12 +129,12 @@ const displayPlaylist = (data, parent) => {
     </path>
   </svg>`;
 
-    playlist_tab.setAttribute('class','playlist_tab');
+    playlist_tab.setAttribute('class', 'playlist_tab');
     image_contaier.setAttribute('class', 'mini_background_container');
     desc_container.setAttribute('class', 'short_desc_container');
 
     playlist_tab.onclick = () => {
-      openPlayList({"id": element.id, "background": element.background});
+      openPlayList({ "id": element.id, "background": element.images[0].url });
     }
 
     desc_container.append(title, description);
@@ -101,16 +144,23 @@ const displayPlaylist = (data, parent) => {
   });
 }
 
-const show_playlist = async (container, type, limit) => {
-  let data = await getPlaylists(type, limit);
-  displayPlaylist(data, container);
+const show_playlist = async (container, category, limit) => {
+  try {
+    let data = await getPlaylists(category, limit, TOKEN);
+    displayPlaylist(data, container);
+  } catch (error) {
+    refreshToken();
+  }
 }
 
 onload = () => {
+  if (!localStorage.getItem('spotify_login_flag')) {
+    localStorage.setItem('spotify_login_flag', JSON.stringify(false));
+  }
   nav_left_container.innerHTML = left_nav();
   signupChecks();
-  show_playlist(playlist_one, "default", 7);
-  show_playlist(playlist_two, "focus", 7);
-  show_playlist(playlist_three, "mood", 7);
-  show_playlist(playlist_four, "popular_new", 7);
+  show_playlist(playlist_one, "toplists", 7);
+  show_playlist(playlist_two, "0JQ5DAqbMKFCbimwdOYlsl", 7);
+  show_playlist(playlist_three, "0JQ5DAqbMKFzHmL4tf05da", 7);
+  show_playlist(playlist_four, "0JQ5DAqbMKFHCxg5H5PtqW", 7);
 }

@@ -57,7 +57,6 @@ a[href="index.html"] p {
 
 .top_nav {
   grid-area: page_top;
-  background-color: #000000a0;
 }
 
 .left_nav {
@@ -87,8 +86,15 @@ a[href="index.html"] p {
   height: 100%;
 }
 
+.gradientOne {
+  background-image: linear-gradient(#252525, #000000);
+}
+
+.gradientTwo {
+  background-image: linear-gradient(#2b4172, #000000);
+}
+
 .background_color {
-  background-image: linear-gradient(#2d2d2d, #000000);
   top: 0;
   position: absolute;
   width: 100%;
@@ -242,6 +248,7 @@ a[href="index.html"] p {
 .login_pop_desc {
   text-align: center;
   max-width: 300px;
+  padding-top: 30px;
 }
 
 .login_pop_desc>div:first-child {
@@ -258,8 +265,14 @@ a[href="index.html"] p {
   gap: 15px;
 }
 
+.playlist_background {
+  width: 400px;
+}
+
 #playlist_background {
   border-radius: 10px;
+  display: block;
+  width: 100%;
 }
 
 #popup_signup {
@@ -296,7 +309,7 @@ a[href="index.html"] p {
 #close_btn {
   position: absolute;
   bottom: -40px;
-  left: 380px;
+  left: 400px;
   background-color: black;
   color: var(--faint_white);
   font-size: 13px;
@@ -352,5 +365,23 @@ a[href="index.html"] p {
     z-index: -1;
     position: relative;
     left: -7px;
+  }
+}
+
+@media (max-width: 650px) {
+  .playlist_container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .playlist_tab:nth-child(4) {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .playlist_container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .playlist_tab:nth-child(3) {
+    display: none;
   }
 }

@@ -1,0 +1,148 @@
+.player {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  align-items: center;
+}
+
+.player * {
+  /* border: 1px solid white; */
+}
+
+.player_left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.player_image_container {
+  width: 55px;
+}
+
+.player_image_container>img {
+  display: block;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.player_desc_container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.player_desc_container>p {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 300;
+}
+
+#player_artist_name {
+  color: #9c9c9c;
+  transition: color ease 300ms;
+}
+
+#player_artist_name:hover {
+  color: white;
+}
+
+.song_actions_container {
+  display: flex;
+  gap: 20px;
+  margin-left: 20px;
+}
+
+.song_actions_container>div {
+  background-color: black;
+  fill: #b3b3b3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: fill ease 300ms;
+  cursor: pointer;
+}
+
+.song_actions_container>div:hover {
+  fill: white;
+}
+
+.player_mid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 11px;
+  color: #b3b3b3;
+}
+
+.control_top {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.control_top>div {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  fill: #9c9c9c;
+  cursor: pointer;
+}
+
+.control_top>div:hover {
+  fill: white;
+}
+
+.control_top>div:first-child {
+  fill: #05ac05;
+}
+
+.control_top>div:nth-child(3) {
+  background-color: white;
+  border-radius: 500px;
+  padding: 10px;
+  fill: black;
+}
+
+.control_bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+}
+
+hr {
+  margin-left: 0;
+  margin-right: 0;
+  width: 300px;
+  background-color: white;
+  height: 4px;
+  border-radius: 10px;
+}
+
+.player_right {
+  display: flex;
+  fill: #b3b3b3;
+  gap: 20px;
+  transition: fill ease 300ms;
+}
+
+.player_right>div {
+  cursor: login_btn;
+}
+
+.player_right>div:hover {
+  fill: white;
+}
+
+@media (max-width: 750px) {
+  .player_right {
+    display: none;
+  }
+}
+
+@media (max-width: 650px) {
+  .control_bottom {
+    display: none;
+  }
+}
