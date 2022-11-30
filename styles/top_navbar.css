@@ -103,6 +103,7 @@
   fill: white;
 }
 
+
 .user_pop>div {
   display: flex;
   align-items: center;
@@ -122,6 +123,7 @@
   border-radius: 5px;
   visibility: hidden;
   transition: visibility ease 100ms;
+  z-index: 10000;
 }
 
 .user_pop:hover .hover_name {
