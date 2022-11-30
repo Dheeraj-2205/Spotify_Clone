@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    background-color: black;
+    color: white;
+    height: 100vh;
+    margin: 0;
+  }
+
+  .grid-categories{
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0,1fr));
+    grid-gap: 24px;
+    /* grid-row: auto; */
+    grid-template-rows: 1fr;
+    overflow-y: hidden;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .categories-container{
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;   
+    width: 100%;
+    /* height: 100%; */
+  }
+  .categories-container::after{
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+  }
+  /* .categories-container > div{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  } */
+
+  .search-page-thumbnails{
+    display: block;
+    height: 100px;
+    width: 100px;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);
+    position: absolute;
+    transform: rotate(25deg) translate(18%,-2%);
+    right: 0;
+    bottom: 0;
+  }
+
+  .categories-title{
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    margin-block: 0px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: var(--font-family,CircularSpTitle,CircularSpTitle-Tall,CircularSp-Arab,CircularSp-Hebr,CircularSp-Cyrl,CircularSp-Grek,CircularSp-Deva,var(--fallback-fonts,sans-serif));
+    color: inherit;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    padding: 16px;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    object-fit: cover;
+    object-position: center center;
+  }
