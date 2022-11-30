@@ -1,5 +1,5 @@
 import { left_nav, top_nav, loggedOutBottom, top_nav_login, playerBottom } from "../utils/components.js";
-import { getPlaylists } from "../utils/api_calls.js";
+import { refreshToken, getPlaylists } from "../utils/api_calls.js";
 
 let spotify_login_flag = JSON.parse(localStorage.getItem('spotify_login_flag'));
 const nav_left_container = document.querySelector('#left_nav');
@@ -11,29 +11,6 @@ const playlist_two = document.querySelector('#playlist_two');
 const playlist_three = document.querySelector('#playlist_three');
 const playlist_four = document.querySelector('#playlist_four');
 const TOKEN = localStorage.getItem('spotify_token') || '';
-
-const getToken = async () => {
-  const clientId = '759884d040d349538fa760f5fc776b08';
-  const clientSecret = '2515dd0e369e482da00e5304388f3812';
-
-  const result = await fetch('https://accounts.spotify.com/api/token', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'Authorization': 'Basic ' + btoa(clientId + ':' + clientSecret)
-    },
-    body: 'grant_type=client_credentials'
-  });
-
-  const data = await result.json();
-  return data.access_token;
-}
-
-const refreshToken = async () => {
-  let newToken = await getToken();
-  localStorage.setItem('spotify_token', newToken);
-  location.reload();
-}
 
 if (TOKEN.length == 0) {
   refreshToken();
