@@ -5,10 +5,6 @@
   align-items: center;
 }
 
-.player * {
-  /* border: 1px solid white; */
-}
-
 .player_left {
   display: flex;
   align-items: center;
