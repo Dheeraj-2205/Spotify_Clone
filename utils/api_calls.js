@@ -18,7 +18,6 @@ async function getToken () {
 async function refreshToken () {
   let newToken = await getToken();
   localStorage.setItem('spotify_token', newToken);
-  location.reload();
 }
 
 async function getPlaylists(category, limit, TOKEN) {
@@ -31,5 +30,18 @@ async function getPlaylists(category, limit, TOKEN) {
   let data = await response.json();
   return data.playlists.items;
 }
+async function getTrack(playlistID,TOKEN){
+  let res = await fetch(`https://api.spotify.com/v1/playlists/${playlistID}/tracks?offset=0&limit=20`,{
+      method :'GET',
+      headers : {
+          "Authorization" : `Bearer ${TOKEN}` ,
+          "Content-Type" : "application/json"
+      }
+  });
+  let data = await res.json();
+  return data;
+  
+  
+}
 
-export { refreshToken, getPlaylists };
+export { refreshToken, getPlaylists, getTrack};
