@@ -25,7 +25,7 @@ return `
       </a>
     </div>
     <div>
-      <a href="search.html">
+      <a href="/pages/search.html">
         <div class="left_nav_icon_container">
           <svg fill="white" role="img" height="24" width="24" aria-hidden="true" viewBox="0 0 24 24">
             <path
