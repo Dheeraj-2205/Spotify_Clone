@@ -11,7 +11,7 @@ return `
   </div>
   <div class="left_nav_list_one">
     <div>
-      <a href="index.html">
+      <a href="/index.html">
         <div class="left_nav_icon_container">
           <svg role="img" height="24" width="24" aria-hidden="true" viewBox="0 0 24 24">
             <path
@@ -247,7 +247,6 @@ return `
     </div>
   </div>
   <div class="player_mid">
-    <audio id="player_audio"></audio>
     <div class="control_top">
       <div>
         <svg role="img" height="16" width="16" aria-hidden="true" viewBox="0 0 16 16">
@@ -259,14 +258,14 @@ return `
           </path>
         </svg>
       </div>
-      <div>
+      <div id="previous_button">
         <svg role="img" height="16" width="16" aria-hidden="true" viewBox="0 0 16 16">
           <path
             d="M3.3 1a.7.7 0 01.7.7v5.15l9.95-5.744a.7.7 0 011.05.606v12.575a.7.7 0 01-1.05.607L4 9.149V14.3a.7.7 0 01-.7.7H1.7a.7.7 0 01-.7-.7V1.7a.7.7 0 01.7-.7h1.6z">
           </path>
         </svg>
       </div>
-      <div>
+      <div id="bottom_play_button">
         <!-- pause -->
         <!-- <svg role="img" height="16" width="16" aria-hidden="true" viewBox="0 0 16 16">
           <path
@@ -279,7 +278,7 @@ return `
           </path>
         </svg>
       </div>
-      <div>
+      <div id="next_button">
         <svg role="img" height="16" width="16" aria-hidden="true" viewBox="0 0 16 16">
           <path
             d="M12.7 1a.7.7 0 00-.7.7v5.15L2.05 1.107A.7.7 0 001 1.712v12.575a.7.7 0 001.05.607L12 9.149V14.3a.7.7 0 00.7.7h1.6a.7.7 0 00.7-.7V1.7a.7.7 0 00-.7-.7h-1.6z">
@@ -296,11 +295,13 @@ return `
     </div>
     <div class="control_bottom">
       <div class="starting_time">
-        <span>0:00</span>
+        <span id="curr_song_time">0:00</span>
       </div>
-      <hr>
+      <div class="progress_container">
+        <div class="progress_bar" id="progress_bar"></div>
+      </div>
       <div class="end_time">
-        <span>0:00</span>
+        <span>0:30</span>
       </div>
     </div>
   </div>
