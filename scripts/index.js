@@ -38,6 +38,8 @@ const signupChecks = () => {
         location = './pages/signup.html';
       }
     });
+
+    
   } else {
     background.setAttribute('class', 'background_color gradientTwo');
     nav_top_container.innerHTML = top_nav_login();
@@ -80,7 +82,7 @@ const showLoginPop = (background) => {
 const openPlayList = (obj) => {
   if (spotify_login_flag) {
     localStorage.setItem('spotify_curr_playlist', obj.id);
-    location = 'playlist.html';
+    location = '/pages/playlist.html';
   } else {
     showLoginPop(obj.background);
   }

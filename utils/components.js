@@ -11,7 +11,7 @@ return `
   </div>
   <div class="left_nav_list_one">
     <div>
-      <a href="index.html">
+      <a href="/index.html">
         <div class="left_nav_icon_container">
           <svg role="img" height="24" width="24" aria-hidden="true" viewBox="0 0 24 24">
             <path
