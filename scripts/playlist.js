@@ -1,97 +1,158 @@
 import { left_nav, top_nav_login, playerBottom } from "../utils/components.js";
-import {refreshToken,getTrack} from "../utils/api_calls.js";
-
-// refreshToken();
+import { refreshToken, getTrack } from "../utils/api_calls.js";
+import { millisToMinutesAndSeconds } from "../utils/utilities.js";
 
 const nav_left_container = document.querySelector('#left_nav');
 const nav_top_container = document.querySelector('#top_nav');
-const background = document.querySelectorAll('.background_color')[0];
 const nav_bottom = document.querySelector('#page_bottom');
 
-
-let TOKEN  = (localStorage.getItem("spotify_token")) || "";
-let playlistID = localStorage.getItem("spotify_curr_playlist") || "";
-
-nav_top_container.style.backgroundColor = "black";
 nav_top_container.innerHTML = top_nav_login();
 nav_bottom.innerHTML = playerBottom();
 nav_left_container.innerHTML = left_nav();
 
-
-const renderingTheData = (data)=>{
-    let song = document.querySelector(".songList");
-    data.forEach((ele) => {
-        let eachsong = document.querySelector(".song");
-        let str = ``
-        str +=`
-        <div class = "song">
-            <img class="cover" src=${ele.track.album.images[2].url} alt="Error">
-            <span id="1" class="songName">${ele.track.name}<br>${ele.track.artists[0].name}</span>
-            <span id="1" class="songName">5 days ago</span> 
-
-            
-            <span class="hide">${millisToMinutesAndSeconds(ele.track.duration_ms)}</span>
-        </div>       
-        `
-        song.innerHTML += str;
-
-    });
-    
-}
-async function displayData(playlistID,TOKEN){
-    try {
-        let data = await getTrack(playlistID,TOKEN);
-        renderingTheData(data.items)
-        topHeading(data.items)
-
-    } catch (error){
-        refreshToken();
-        window.location.reload();
-    }
-    
-}      
-displayData(playlistID,TOKEN); 
-
-function millisToMinutesAndSeconds(millis) {
-    var minutes = Math.floor(millis / 60000);
-    var seconds = ((millis % 60000) / 1000).toFixed(0);
-    return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
-}
+const playing_img = document.querySelector('#playing_img');
+const player_song_name = document.querySelector('#player_song_name');
+const player_artist_name = document.querySelector('#player_artist_name');
+const bottom_play_button = document.querySelector('#bottom_play_button');
+const previous_button = document.querySelector("#previous_button");
+const next_button = document.querySelector('#next_button');
+const progress_bar = document.querySelector('#progress_bar');
+const curr_song_time = document.querySelector('#curr_song_time');
+let TOKEN = (localStorage.getItem("spotify_token")) || "";
+let playlistID = localStorage.getItem("spotify_curr_playlist") || ""; // pass playlist name also
 let banner = document.querySelector(".banner");
-const topHeading = (data)=>{
-    let str =``;
-    data.forEach((ele,ind)=>{
-        if(ind == 0){
-            str = `
-        <img class="likedImg"
-        src=${ele.track.album.images[0].url}
-        alt="">
-        <div class="likedHead">
-            <div class="likedTwo">Playlist</div>
-            <div class="likedOne">${ele.track.name}</div>
-            <div class="likedTwo">${ele.track.artists[0].name}</div><br>
-            <div class="likedTwo">@topHitsAllTime 20 Songs</div>
-        </div>`
-        }
-        
+let songs_body = document.querySelector("#songs_body");
+let play_button = document.querySelector('#play_button');
+let songs_array = [];
+let curr_song = new Audio("");
+let curr_song_index = 0;
 
-    
-    })
+curr_song.ontimeupdate = () => {
+    let curr_time = curr_song.currentTime;
+    if (Math.floor(curr_time) < 10) {
+        curr_song_time.textContent = "0:0" + Math.floor(curr_time);
+    } else {
+        curr_song_time.textContent = "0:" + Math.floor(curr_time);
+    }
+    let percent = (curr_time / 30) * 100;
+    progress_bar.style.right = `${100 - percent}%`;
+}
+
+const displayBanner = (data) => {
+    let str = `
+        <div class="banner_image_container">
+            <img class="banner_image" src="${data[0].track.album.images[0].url}">
+        </div>
+        <div class="banner_description">
+            <div class="playlist_header">Playlist</div>
+            <div class="playlist_name">${data[0].track.name}</div>
+            <div class="playlist_description">${data[0].track.artists[0].name}</div>
+            <div class="playlist_info">Spotify &nbsp;.&nbsp; 20 Songs</div>
+        </div>`;
     banner.innerHTML = str;
 }
 
-let  playbutton = ``;
-    playbutton += `<button name="play"></button>
-    <i class="fa-regular fa-heart fa-3x"
-        style="margin-left: 30px;  color: rgb(214, 200, 200); font-weight: lighter;"></i>
-    <i class="fa-solid fa-ellipsis fa-3x" style="margin-left: 30px; color: rgb(222, 210, 210);"></i>`
-    
-document.querySelector(".play-button").innerHTML = playbutton;
+const displaySongs = (data) => {
+    songs_body.innerHTML = null;
+    data.forEach((element, index) => {
+        let tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td>
+                <span>${index + 1}</span>
+            </td>
+            <td>
+                <div class="title_container">
+                    <div class="song_avatar_container">
+                        <img src="${element.track.album.images[2].url}">
+                    </div>
+                    <div class="song_description">
+                        <div class="song_name">
+                        <span>${element.track.name}</span>
+                        </div>
+                        <div class="song_artist">
+                        <span>${element.track.artists[0].name}</span>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="song_album">
+                <span>${element.track.album.name}</span>
+                </div>
+            </td>
+            <td>
+                <span>${millisToMinutesAndSeconds(element.track.duration_ms)}</span>
+            </td>
+        `;
+        songs_body.append(tr);
+        tr.onclick = () => {
+            playMusic(index);
+            curr_song.play();
+        }
+    });
+}
 
-let tablehead = ``;
+async function displayData(playlistID) {
+    try {
+        let data = await getTrack(playlistID, TOKEN);
+        displayBanner(data.items)
+        displaySongs(data.items);
+        songs_array = [...data.items];
+    } catch (error) {
+        await refreshToken();
+    }
 
-    tablehead += ` <span class="hide">TITLE#</span>
-    <span class="hide">ALBUM</span>
-    <span class="favourite">DATED ADDED</span>
-    <span class="hide"><i class="fa fa-solid fa-clock"></i></span>`
-document.querySelector(".tableHead").innerHTML = tablehead
+}
+
+function playMusic(index) {
+    playing_img.src = songs_array[index].track.album.images[2].url;
+    player_song_name.textContent = songs_array[index].track.album.name;
+    player_artist_name.textContent = songs_array[index].track.artists[0].name;
+    curr_song.src = songs_array[index].track.preview_url;
+
+    bottom_play_button.innerHTML = `<svg role="img" height="16" width="16" aria-hidden="true" viewBox="0 0 16 16">
+            <path
+              d="M2.7 1a.7.7 0 00-.7.7v12.6a.7.7 0 00.7.7h2.6a.7.7 0 00.7-.7V1.7a.7.7 0 00-.7-.7H2.7zm8 0a.7.7 0 00-.7.7v12.6a.7.7 0 00.7.7h2.6a.7.7 0 00.7-.7V1.7a.7.7 0 00-.7-.7h-2.6z">
+            </path>
+          </svg>`;
+}
+
+play_button.onclick = () => {
+    playMusic(0);
+    curr_song.play();
+}
+
+bottom_play_button.onclick = () => {
+    try {
+        if (curr_song.paused) {
+            bottom_play_button.innerHTML = `<svg role="img" height="16" width="16" aria-hidden="true" viewBox="0 0 16 16">
+            <path
+              d="M2.7 1a.7.7 0 00-.7.7v12.6a.7.7 0 00.7.7h2.6a.7.7 0 00.7-.7V1.7a.7.7 0 00-.7-.7H2.7zm8 0a.7.7 0 00-.7.7v12.6a.7.7 0 00.7.7h2.6a.7.7 0 00.7-.7V1.7a.7.7 0 00-.7-.7h-2.6z">
+            </path>
+          </svg>`;
+            curr_song.play();
+        } else {
+            bottom_play_button.innerHTML = `<svg role="img" height="16" width="16" aria-hidden="true" viewBox="0 0 16 16">
+            <path d="M3 1.713a.7.7 0 011.05-.607l10.89 6.288a.7.7 0 010 1.212L4.05 14.894A.7.7 0 013 14.288V1.713z">
+            </path>
+          </svg>`;
+            curr_song.pause();
+        }
+    } catch (error) { }
+}
+
+next_button.onclick = () => {
+    if (curr_song_index < songs_array.length) {
+        playMusic(++curr_song_index);
+        curr_song.play();
+    }
+}
+
+previous_button.onclick = () => {
+    if (curr_song_index > 0) {
+        playMusic(--curr_song_index);
+        curr_song.play();
+    }
+}
+
+displayData(playlistID);

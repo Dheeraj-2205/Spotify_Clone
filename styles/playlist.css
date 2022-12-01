@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 :root {
@@ -33,6 +32,7 @@ body {
   height: 100vh;
   margin: 0;
 }
+
 .grid_container {
   display: grid;
   grid-template-areas:
@@ -47,194 +47,233 @@ body {
   width: 100%;
 }
 
-
-
-.containerArtists {
-  width: 15vw;
-  color: grey;
-  font-weight: 600;
+.page_right {
+  padding: 0 !important;
 }
 
-.likedBox{
-  display: grid;
-  grid-template-columns: auto auto auto;
-  grid-gap: 1rem;
-  padding: 1rem;
+.page_bottom {
+  background-color: #181818;
+  padding: 5px 0;
 }
 
-.liked{
-  background-image: linear-gradient(to bottom right, #470DF5, #8E8EE5);
-  border-radius: 5px;
-  padding: 1rem;
+.top_nav {
+  background-color: #3a2876;
+}
+
+/* .background_color {
+  background-image: linear-gradient(#533B9F, #060311);
+} */
+
+.banner {
+  background-color: #3a2876;
   display: flex;
-  flex-direction: column;
-  justify-content: end;
-}
-
-.likedTitle{
-  font-weight: 600;
-  font-size: 2rem;
-  margin-bottom: 0.4rem;
-}
-
-.likedCount{
-  text-shadow: 0px 0px 5px white;
-}
-
-.banner{
-  height: 45vh;
-  background-image: linear-gradient(to bottom right, #533B9F, #2A1E51);
-  box-shadow: 0px 0px 300px #4D3896;
-  display: flex;
+  padding: 30px;
+  gap: 30px;
   align-items: flex-end;
-  margin-left: 55px;
+  box-shadow: 0px 0px 600px #4D3896;
 }
 
-.likedImg{
-  margin: 2rem;
-  width: 14vw;
-  box-shadow: 1px 1px 100px black;
+.banner_image_container {
+  max-width: 220px;
 }
 
-.likedHead{
+.banner_image {
+  display: block;
+  width: 100%;
+  box-shadow: 0px 0px 90px 1px rgba(45, 45, 45, 0.398);
+}
+
+.banner_description {
   display: flex;
   flex-direction: column;
-  margin: 2rem 0;
+  gap: 10px;
 }
 
-.likedOne{
-  font-size: 6rem;
-  letter-spacing: -3px;
-  font-weight: 800;
+.playlist_header {
+  font-weight: 600;
 }
 
-.likedTwo{
-  font-weight: bold;
+.playlist_name {
+  font-weight: 900;
+  font-size: 100px;
+  transition: font ease 400ms;
 }
 
+.playlist_description {
+  color: var(--faint_white);
+  font-weight: 200;
+}
 
-.play-button {
-  display: -ms-flex;
-  display: -webkit-flex;
+.playlist_info {
+  font-size: 13px;
+}
+
+.playlist_actions {
   display: flex;
-  margin-left: 5%;
+  gap: 15px;
+  fill: var(--faint_white);
+  padding: 25px 10px;
+  padding-bottom: 0;
 }
 
-.play-button button[name="play"] {
-  width: 50px;
-  height: 50px;
-  background:rgb(17, 154, 17);
-  border: none;
-  border-radius: 100%;
-  cursor: pointer;
-}
-.play-button button[name="play"]:focus {
-  outline: 0;
-}
-
-.play-button button[name="play"]::after {
-  content: '';
-  display: inline-block;
-  position: relative;
-  top: 1px;
-  left: 3px;
-  border-style: solid;
-  border-width: 10px 0 10px 20px;
-  border-color: transparent transparent transparent black;
-}
-
-.song{
-  display: grid;
-  padding: 0.5rem;
-  margin: 0 1rem;
-  border-radius: 5px;
-  font-size: 0.9rem;
+.play_button {
+  background-color: #1ed760;
+  fill: black;
+  padding: 13px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  margin-bottom: 1%;
-}
-.tableHead{
-  display: grid;
-  padding: 0.5rem;
-  margin: 0 1rem;
-  border-radius: 5px;
-  font-size: 0.9rem;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  transition: transform ease 50ms;
+  border: none;
+  outline: none;
 }
 
-.song:hover > .songName{
-  text-decoration: underline;
+.play_button:hover {
+  transform: scale(1.045);
 }
 
-.hide, .favourite{
-  text-align: center;
+.action_hover_color {
+  transition: color ease 100ms;
+  background-color: transparent;
+  border: none;
+  transition: fill ease 50ms;
 }
 
-.songList{
-  padding: 1%;
+.action_hover_color:hover {
+  fill: white;
 }
 
-.songName{
-  font-weight: bold;
-  font-size: 0.85rem;
-  text-align : center;
+.songs_container {
+  margin: 30px 0px;
+  padding: 0 10px;
 }
 
-.song:hover{
+hr {
+  height: 1px;
+  background-color: #cccccc4a;
+  border: none;
+  position: absolute;
+  width: 100%;
+  top: 140px;
+  left: 0;
+  right: 0;
+}
+
+table {
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+thead,
+tbody {
+  color: #b3b3b3;
+  fill: #b3b3b3;
+}
+
+th {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.141);
+}
+
+thead th:nth-child(1) {
+  width: 3%;
+  padding-left: 10px;
+}
+
+thead th:nth-child(2) {
+  width: 50%;
+}
+
+thead th:nth-child(3) {
+  width: 50%;
+}
+
+thead th:nth-child(4) {
+  width: 5%;
+  padding-right: 10px;
+}
+
+tbody {
+  border-top: 30px;
+}
+
+th:after {
+  line-height: 15px;
+  content: ".";
+  color: transparent;
+  display: block;
+}
+
+tbody:before {
+  line-height: 10px;
+  content: ".";
+  color: transparent;
+  display: block;
+}
+
+td::before {
+  line-height: 10px;
+  content: ".";
+  color: transparent;
+  display: block;
+}
+
+td:after {
+  line-height: 10px;
+  content: ".";
+  color: transparent;
+  display: block;
+}
+
+tbody tr:hover {
   cursor: pointer;
   background-color: rgba(1000, 1000, 1000, 0.15);
 }
 
-.cover{
-  width: 3vw;
-  justify-self: center;
+tbody span:hover {
+  color: white;
+  text-decoration: underline;
 }
 
-.tableHead{
-  margin: 3rem 1rem 1rem 1rem;
-  font-weight: bold;
-  border-bottom: 1px solid grey;
+td:first-child {
+  border-radius: 5px 0 0 5px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
-.green{
-  color: greenyellow;
+td:last-child {
+  border-radius: 0 5px 5px 0;
+  padding-right: 10px;
 }
 
-@media screen and (max-width: 1000px) {
-  
-  main{
-      margin-left: 30vw;
-  }
-  .top{
-      width: 70vw;
-  }
-  .likedOne{
-      font-size: 4rem;
-  }
-  .last{
-      display: none;
-  }
-  .containerBox{
-      grid-template-columns: auto auto auto;
-  }
+.title_container {
+  display: flex;
+  gap: 20px
 }
 
+.song_avatar_container {
+  width: 40px;
+}
 
+.song_avatar_container>img {
+  display: block;
+  width: 100%;
+}
 
+.song_description {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
 
+.song_name {
+  color: white;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@media (max-width: 750px) {
+  .playlist_name {
+    font-size: 60px;
+  }
+}

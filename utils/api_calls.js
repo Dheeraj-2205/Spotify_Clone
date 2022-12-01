@@ -32,7 +32,6 @@ async function getPlaylists(category, limit, TOKEN) {
 }
 async function getTrack(playlistID,TOKEN){
   let res = await fetch(`https://api.spotify.com/v1/playlists/${playlistID}/tracks?offset=0&limit=20`,{
-      method :'GET',
       headers : {
           "Authorization" : `Bearer ${TOKEN}` ,
           "Content-Type" : "application/json"
@@ -40,8 +39,6 @@ async function getTrack(playlistID,TOKEN){
   });
   let data = await res.json();
   return data;
-  
-  
 }
 
 export { refreshToken, getPlaylists, getTrack};
