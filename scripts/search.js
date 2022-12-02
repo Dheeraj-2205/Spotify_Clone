@@ -1,11 +1,10 @@
-import { refreshToken } from "../utils/api_calls.js";
-import { left_nav, top_nav, loggedOutBottom, top_nav_login, playerBottom } from "../utils/components.js";
+import { left_nav, top_nav, loggedOutBottom, top_nav_search, playerBottom } from "../utils/components.js";
+import { debounce } from "../utils/utilities.js";
 
 const nav_left_container = document.querySelector('#left_nav');
 const nav_top_container = document.querySelector('#top_nav');
 // const background = document.querySelectorAll('.background_color')[0];
 const nav_bottom = document.querySelector('#page_bottom');
-const searchBar = document.getElementById("searchBar");
 let login_flag = JSON.parse(localStorage.getItem('spotify_login_flag'));
 
 if (!login_flag) {
@@ -13,12 +12,13 @@ if (!login_flag) {
 }
 
 nav_left_container.innerHTML = left_nav();
-nav_top_container.innerHTML = top_nav_login();
+nav_top_container.innerHTML = top_nav_search();
 nav_bottom.innerHTML = playerBottom();
 
 const user_pop = document.querySelectorAll('.user_pop')[0];
 const user_options = document.querySelector('#user_options');
 const logout_button = document.querySelector('#logout_btn');
+const searchBar = document.getElementById("search_bar");
 
 user_pop.onclick = () => {
     let val = user_options.style.visibility;
@@ -34,22 +34,10 @@ logout_button.onclick = () => {
     location.reload();
 }
 
-// refreshToken();
-
 let searchFunc = () => {
     let query = searchBar.value;
     localStorage.setItem("spotify_search_query", query);
-    // console.log(query);
-    location = "resultPage.html";
-};
-
-let debounce = (callBack, delay) => {
-    let debounceTimer;
-
-    return function () {
-        clearTimeout(debounceTimer);
-        debounceTimer = setTimeout(callBack, delay);
-    }
+    location = "results.html";
 };
 
 let openCateg = (e) => {
@@ -77,4 +65,4 @@ categories.forEach(e=>{
     }
 });
 
-searchBar.onkeyup = debounce(searchFunc, 1000);
+searchBar.onkeyup = debounce(searchFunc, 600);

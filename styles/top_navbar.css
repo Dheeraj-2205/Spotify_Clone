@@ -42,7 +42,8 @@
   margin: 0;
 }
 
-.signup_btn, .login_btn {
+.signup_btn,
+.login_btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -65,7 +66,8 @@
   padding: 10px 20px;
 }
 
-.login_btn:hover, .upgrade_btn:hover {
+.login_btn:hover,
+.upgrade_btn:hover {
   position: relative;
   transform: scale(1.05);
   transition: ease 90ms
@@ -156,7 +158,7 @@
   padding: 10px;
   width: 100%;
   justify-content: space-between;
-} 
+}
 
 #user_options>div:hover {
   background-color: #555555;
@@ -164,4 +166,29 @@
 
 #user_options>div:last-child {
   border-top: 1px solid rgb(77, 77, 77);
+}
+
+.search_bar_container {
+  background-color: white;
+  border-radius: 500px;
+  padding: 0 10px !important;
+  width: 400px;
+  transition: width ease 400ms;
+}
+
+.search_bar_container>svg {
+  fill: black;
+}
+
+#search_bar {
+  border: none;
+  width: 100%;
+  padding: 10px;
+  outline: none;
+}
+
+@media (max-width: 700px) {
+  .search_bar_container {
+    width: 200px;
+  }
 }

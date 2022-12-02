@@ -4,4 +4,12 @@ function millisToMinutesAndSeconds(millis) {
   return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
 }
 
-export { millisToMinutesAndSeconds };
+function debounce(callBack, delay) {
+  let debounceTimer;
+  return function () {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(callBack, delay);
+  }
+};
+
+export { millisToMinutesAndSeconds, debounce };
