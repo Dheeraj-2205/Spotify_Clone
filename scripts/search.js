@@ -43,7 +43,7 @@ let searchFunc = () => {
 let openCateg = (e) => {
     // console.log(e);
     localStorage.setItem("catID", e);
-    location = "category.html";
+    location = "categoryPlaylists.html";
 };
 
 let categories = document.querySelectorAll(".categories-container");
@@ -57,8 +57,10 @@ let categories = document.querySelectorAll(".categories-container");
 //     });
 // }
 
-categories.forEach(e => {
-    e.onclick = () => {
+
+categories.forEach(e=>{
+    e.onclick = () =>{
+        //console.log(e);
         openCateg(e.id);
     }
 });
