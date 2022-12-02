@@ -188,21 +188,27 @@ a[href="index.html"] p {
 
 .mini_background_container>button {
   position: absolute;
-  right: 5px;
-  bottom: -20px;
-  background-color: #2fff71;
-  border: none;
-  border-radius: 500px;
-  padding: 10px;
+  bottom: 0px;
+  right: 20px;
+  background-color: transparent;
+  fill: transparent;
+  padding: 13px;
+  border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  display: none;
+  transition: transform ease 50ms;
+  border: none;
+  outline: none;
+  visibility: hidden;
+  transition: bottom ease 400ms, visibility ease 200ms;
 }
 
 .playlist_tab:hover button {
-  display: flex;
-  bottom: 10px;
+  fill: black;
+  background-color: #1ed760;
+  bottom: 4px;
+  visibility: visible;
 }
 
 .short_desc_container {
