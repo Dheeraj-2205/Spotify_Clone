@@ -44,7 +44,8 @@ const displayPlaylist = (data, parent) => {
       desc_container.setAttribute('class', 'short_desc_container');
   
       playlist_tab.onclick = () => {
-        openPlayList({ "id": element.id, "background": element.images[0].url });
+        localStorage.setItem('spotify_curr_playlist', element.id);
+        location = "playlist.html";
       }
   
       desc_container.append(title, description);
@@ -78,7 +79,7 @@ let showCategoryPlaylists = async() =>{
         let data3 = await getCategoryPlaylists(catID,20, 7, TOKEN);
         // let data = await res.json();
 
-        console.log(data);
+        // console.log(data);
         displayPlaylist(data, playlist_one);
         displayPlaylist(data2, playlist_two);
         displayPlaylist(data3, playlist_three);
