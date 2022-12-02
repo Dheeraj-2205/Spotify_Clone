@@ -15,7 +15,8 @@ let verify=()=>{
         }
     })
     if(flag){
-        window.location.href="../index.html"
+        localStorage.setItem('spotify_login_flag', JSON.stringify(true));
+        window.location.href="/"
     }
     else{
         alert("Invalid credentials!");

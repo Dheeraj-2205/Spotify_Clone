@@ -47,6 +47,7 @@ const signupChecks = () => {
 
     const user_pop = document.querySelectorAll('.user_pop')[0];
     const user_options = document.querySelector('#user_options');
+    const logout_button = document.querySelector('#logout_btn');
 
     user_pop.onclick = () => {
       let val = user_options.style.visibility;
@@ -55,6 +56,11 @@ const signupChecks = () => {
       } else {
         user_options.style.visibility = "hidden";
       }
+    }
+
+    logout_button.onclick = () => {
+      localStorage.setItem('spotify_login_flag', JSON.stringify(false));
+      location.reload();
     }
   }
 }

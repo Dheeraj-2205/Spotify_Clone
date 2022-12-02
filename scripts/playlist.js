@@ -27,6 +27,29 @@ let songs_array = [];
 let curr_song = new Audio("");
 let curr_song_index = 0;
 
+const user_pop = document.querySelectorAll('.user_pop')[0];
+const user_options = document.querySelector('#user_options');
+const logout_button = document.querySelector('#logout_btn');
+let login_flag = JSON.parse(localStorage.getItem('spotify_login_flag'));
+
+if (!login_flag) {
+    location = "/";
+}
+
+user_pop.onclick = () => {
+    let val = user_options.style.visibility;
+    if (val == "hidden") {
+        user_options.style.visibility = "visible";
+    } else {
+        user_options.style.visibility = "hidden";
+    }
+}
+
+logout_button.onclick = () => {
+    localStorage.setItem('spotify_login_flag', JSON.stringify(false));
+    location.reload();
+}
+
 curr_song.ontimeupdate = () => {
     let curr_time = curr_song.currentTime;
     if (Math.floor(curr_time) < 10) {

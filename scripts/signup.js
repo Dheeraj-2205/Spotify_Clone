@@ -35,7 +35,7 @@ let saveData=()=>{
     }
     users.push(obj);
     localStorage.setItem("users",JSON.stringify(users));
-    window.location.href="../index.html";
+    window.location.href="/pages/login.html";
 }
 
 let validateEmail=(email)=>{

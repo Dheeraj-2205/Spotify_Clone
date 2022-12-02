@@ -95,7 +95,7 @@ body {
 
 .playlist_name {
   font-weight: 900;
-  font-size: 100px;
+  font-size: 5rem;
   transition: font ease 400ms;
 }
 
