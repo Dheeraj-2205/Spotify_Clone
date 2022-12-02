@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/left_navbar.css">
+  <link rel="stylesheet" href="/styles/top_navbar.css">
+  <link rel="stylesheet" href="/styles/mediaplayer.css">
+  <link rel="stylesheet" href="/styles/results.css">
+  <title></title>
+</head>
+
+<body>
+  <div class="grid_container">
+    <section class="left_nav" id="left_nav"></section>
+    <div class="idk">
+      <section class="top_nav" id="top_nav"></section>
+      <section class="page_right">
+        <div class="results_filter_container">
+          <button class="selected_filter" id="filter_all_button">All</button>
+          <button id="filter_songs_button">Songs</button>
+          <button id="filter_albums_button">Albums</button>
+          <button id="filter_playlists_button">Playlists</button>
+          <button id="filter_artists_button">Artists</button>
+          <button id="filter_podcasts_button">Podcasts & Shows</button>
+          <button id="filter_profiles_button">Profiles</button>
+        </div>
+        <div class="search_results_section" id="search_results_section"></div>
+      </section>
+      <div class="background_color"></div>
+    </div>
+    <section class="page_bottom" id="page_bottom"></section>
+  </div>
+</body>
+
+</html>
+<script src="/scripts/results.js" type="module"></script>
