@@ -42,16 +42,30 @@
                 <div class="label">
                     <label for="login-username" class="Label-sc-1c0cv3r-0 jhxAUN">Password</label>
                 </div>
-                <input type="text" name="" id="email_mobile_number" placeholder="Password">
+                <input type="text" name="" id="password" placeholder="Password">
                 <a href="#" id="forgot">Forgot your password?</a>
             </div>
             <div id="login_btn">
                 <div id="checkbox_div">
-                    <input type="checkbox" id="checkbox">
-                    <label for="checkbox" id="remember">Remember me</label>
+                    <div class="Group-u9bcx5-0 UXQuB sc-iqseJM dpNkNn">
+                        <div class="Checkbox-svpvf6-0 gJoDne">
+                            <input type="checkbox" id="login-remember" name="remember" data-testid="login-remember" class="VisuallyHidden-sc-17bibe8-0 gbnvEH" checked="">
+                            <label for="login-remember" class="Label-cpoq-0 iXswkd">
+                                <span class="Indicator-sc-1airx73-0 kHTWAk">
+
+                                </span>
+                                <span class="TextForLabel-sc-1jqya9m-0 bcyFQV">
+                                    <p class="Type__TypeElement-goli3j-0 VNztd sc-pVTFL gKaJcp">
+                                        Remember me
+                                    </p>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <!-- <label for="checkbox" id="remember">Remember me</label> -->
                 </div>
                 <div>
-                    <button id="login_button">LOG IN</button>
+                    <button id="login_button" onclick="verify()">LOG IN</button>
                 </div>
             </div>
             <hr id="login_border">

@@ -38,6 +38,8 @@ const signupChecks = () => {
         location = './pages/signup.html';
       }
     });
+
+    
   } else {
     background.setAttribute('class', 'background_color gradientTwo');
     nav_top_container.innerHTML = top_nav_login();
@@ -45,6 +47,7 @@ const signupChecks = () => {
 
     const user_pop = document.querySelectorAll('.user_pop')[0];
     const user_options = document.querySelector('#user_options');
+    const logout_button = document.querySelector('#logout_btn');
 
     user_pop.onclick = () => {
       let val = user_options.style.visibility;
@@ -53,6 +56,11 @@ const signupChecks = () => {
       } else {
         user_options.style.visibility = "hidden";
       }
+    }
+
+    logout_button.onclick = () => {
+      localStorage.setItem('spotify_login_flag', JSON.stringify(false));
+      location.reload();
     }
   }
 }
@@ -80,7 +88,7 @@ const showLoginPop = (background) => {
 const openPlayList = (obj) => {
   if (spotify_login_flag) {
     localStorage.setItem('spotify_curr_playlist', obj.id);
-    location = 'playlist.html';
+    location = '/pages/playlist.html';
   } else {
     showLoginPop(obj.background);
   }

@@ -121,6 +121,7 @@
   .left_nav {
     grid-area: page_left;
     width: 390px;
+    transition: width ease 400ms;
   }
   
   .page_bottom {
@@ -181,8 +182,6 @@
   }
   
   @media (max-width : 1300px) {
-    
-    
     .left_nav {
       width: 200px;
     }
