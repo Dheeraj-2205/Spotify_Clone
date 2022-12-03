@@ -239,3 +239,18 @@ const searchFunction = async () => {
 search_bar.onkeyup = debounce(searchFunction, 600);
 search_bar.value = localStorage.getItem('spotify_search_query');
 searchFunction();
+
+const user_pop = document.querySelectorAll('.user_pop')[0];
+const username = document.querySelectorAll('.user_name');
+
+user_pop.onclick = () => {
+  let val = user_options.style.visibility;
+  if (val == "hidden") {
+    user_options.style.visibility = "visible";
+  } else {
+    user_options.style.visibility = "hidden";
+  }
+}
+username.forEach(element => {
+  element.textContent = localStorage.getItem('spotify_current_user');
+});

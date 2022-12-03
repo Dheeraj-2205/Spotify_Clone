@@ -93,6 +93,7 @@
   background-color: black;
   position: relative;
   color: white;
+  z-index: 6;
 }
 
 .user_pop>button {

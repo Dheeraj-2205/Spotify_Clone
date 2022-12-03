@@ -48,6 +48,11 @@ const signupChecks = () => {
     const user_pop = document.querySelectorAll('.user_pop')[0];
     const user_options = document.querySelector('#user_options');
     const logout_button = document.querySelector('#logout_btn');
+    const username = document.querySelectorAll('.user_name');
+
+    username.forEach(element => {
+      element.textContent = localStorage.getItem('spotify_current_user');
+    });
 
     user_pop.onclick = () => {
       let val = user_options.style.visibility;

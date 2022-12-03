@@ -58,11 +58,17 @@ let categories = document.querySelectorAll(".categories-container");
 // }
 
 
-categories.forEach(e=>{
-    e.onclick = () =>{
+categories.forEach(e => {
+    e.onclick = () => {
         //console.log(e);
         openCateg(e.id);
     }
 });
 
 searchBar.onkeyup = debounce(searchFunc, 600);
+
+const username = document.querySelectorAll('.user_name');
+
+username.forEach(element => {
+    element.textContent = localStorage.getItem('spotify_current_user');
+});

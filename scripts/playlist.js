@@ -179,3 +179,9 @@ previous_button.onclick = () => {
 }
 
 displayData(playlistID);
+
+const username = document.querySelectorAll('.user_name');
+
+username.forEach(element => {
+    element.textContent = localStorage.getItem('spotify_current_user');
+});
