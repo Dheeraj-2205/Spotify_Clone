@@ -293,6 +293,10 @@ button.selected_filter {
   gap: 10px;
 }
 
+.album_container .album_tab:nth-child(8), .album_container .album_tab:nth-child(9), .album_container .album_tab:nth-child(10) {
+  display: none;
+}
+
 .album_tab:hover {
   background-color: rgb(37, 37, 37);
   cursor: pointer;
@@ -410,11 +414,126 @@ button.selected_filter {
   visibility: visible;
 }
 
+/* songs section */
+
+table {
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+thead,
+tbody {
+  color: #b3b3b3;
+  fill: #b3b3b3;
+}
+
+th {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.141);
+}
+
+thead th:nth-child(1) {
+  width: 3%;
+  padding-left: 10px;
+}
+
+thead th:nth-child(2) {
+  width: 50%;
+}
+
+thead th:nth-child(3) {
+  width: 50%;
+}
+
+thead th:nth-child(4) {
+  width: 5%;
+  padding-right: 10px;
+}
+
+tbody {
+  border-top: 30px;
+}
+
+th:after {
+  line-height: 15px;
+  content: ".";
+  color: transparent;
+  display: block;
+}
+
+tbody:before {
+  line-height: 10px;
+  content: ".";
+  color: transparent;
+  display: block;
+}
+
+td::before {
+  line-height: 10px;
+  content: ".";
+  color: transparent;
+  display: block;
+}
+
+td:after {
+  line-height: 10px;
+  content: ".";
+  color: transparent;
+  display: block;
+}
+
+tbody tr:hover {
+  cursor: pointer;
+  background-color: rgba(1000, 1000, 1000, 0.15);
+}
+
+tbody span:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+td:first-child {
+  border-radius: 5px 0 0 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+td:last-child {
+  border-radius: 0 5px 5px 0;
+  padding-right: 10px;
+}
+
+.title_container {
+  display: flex;
+  gap: 20px
+}
+
+.song_avatar_container {
+  width: 40px;
+}
+
+.song_avatar_container>img {
+  display: block;
+  width: 100%;
+}
+
+.song_description {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.song_name {
+  color: white;
+}
+
+
 @media (max-width : 1670px) {
   .album_container, .artist_container {
     grid-template-columns: repeat(6, 1fr);
   }
-  .album_tab:nth-child(7), .artist_tab:nth-child(7) {
+  .all_result_album_container .album_tab:nth-child(7), .all_result_artist_container .artist_tab:nth-child(7) {
     display: none;
   }
 }
@@ -423,7 +542,7 @@ button.selected_filter {
   .album_container, .artist_container {
     grid-template-columns: repeat(5, 1fr);
   }
-  .album_tab:nth-child(6), .artist_tab:nth-child(6) {
+  .all_result_album_container .album_tab:nth-child(6), .all_result_artist_container .artist_tab:nth-child(6) {
     display: none;
   }
 }
@@ -438,7 +557,7 @@ button.selected_filter {
   .album_container, .artist_container {
     grid-template-columns: repeat(4, 1fr);
   }
-  .album_tab:nth-child(5), .artist_tab:nth-child(5) {
+  .all_result_album_container .album_tab:nth-child(5), .all_result_artist_container .artist_tab:nth-child(5) {
     display: none;
   }
 }
@@ -465,7 +584,7 @@ button.selected_filter {
   .album_container, .artist_container {
     grid-template-columns: repeat(3, 1fr);
   }
-  .album_tab:nth-child(4), .artist_tab:nth-child(4) {
+  .all_result_album_container .album_tab:nth-child(4), .all_result_artist_container .artist_tab:nth-child(4) {
     display: none;
   }
 }
