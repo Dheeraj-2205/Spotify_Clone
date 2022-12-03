@@ -68,6 +68,8 @@ a[href="index.html"] p {
 .page_bottom {
   grid-area: page_bottom;
   width: 100%;
+  background-color: #181818;
+  padding: 5px 0;
 }
 
 .page_right {
