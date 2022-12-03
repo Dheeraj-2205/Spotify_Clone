@@ -1,4 +1,4 @@
-let users=JSON.parse(localStorage.getItem("users"))||[];
+let users=JSON.parse(localStorage.getItem("spotify_users"))||[];
 
 let emailb=false;
 let email_confirmb=false;
@@ -15,11 +15,8 @@ let saveData=()=>{
     let year=document.getElementById("year").value;
     let day=document.getElementById("day").value;
     let month=document.getElementById("month").value;
-    let gender_option_male=document.getElementById("gender_option_male").value;
-    let gender_option_female=document.getElementById("gender_option_female").value;
-    let gender_option_nonbinary=document.getElementById("gender_option_nonbinary").value;
-    let gender_option_other=document.getElementById("gender_option_other").value;
-    let gender_option_prefernottosay=document.getElementById("gender_option_prefernottosay").value;
+    let gender = document.querySelector("input[type='radio'][name=gender]:checked").value;
+
     let obj={
         email: email,
         profile_name: profile_name,
@@ -27,14 +24,10 @@ let saveData=()=>{
         year: year,
         day: day,
         month: month,
-        gender_option_male: gender_option_male,
-        gender_option_female:gender_option_female,
-        gender_option_nonbinary: gender_option_nonbinary,
-        gender_option_other:gender_option_other,
-        gender_option_prefernottosay: gender_option_prefernottosay
+        gender: gender
     }
     users.push(obj);
-    localStorage.setItem("users",JSON.stringify(users));
+    localStorage.setItem("spotify_users",JSON.stringify(users));
     window.location.href="/pages/login.html";
 }
 
