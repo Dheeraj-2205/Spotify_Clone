@@ -75,76 +75,76 @@ const displayBanner = (data) => {
 }
 
 const displaySongs = (data) => {
-    console.log("data: "+data)
+    console.log("data: " + data)
     songs_body.innerHTML = "";
     data.map((element, index) => {
-        console.log("element: "+element+index);
+        console.log("element: " + element + index);
         let tr = document.createElement('tr');
-        tr.setAttribute("class","songRow");
+        tr.setAttribute("class", "songRow");
 
-            let td1=document.createElement("td");
-            let span1=document.createElement("span");
-            span1.innerText=index + 1;
-            td1.append(span1);
+        let td1 = document.createElement("td");
+        let span1 = document.createElement("span");
+        span1.innerText = index + 1;
+        td1.append(span1);
 
-            let td2=document.createElement("td");
+        let td2 = document.createElement("td");
 
-            let d1=document.createElement("div");
-            d1.setAttribute("class", "title_container");
+        let d1 = document.createElement("div");
+        d1.setAttribute("class", "title_container");
 
-            let d2=document.createElement("div");
-            d2.setAttribute("class", "song_avatar_container");
-            let img1=document.createElement("img");
-            img1.setAttribute("src",element.track.album.images[2].url);
-            d2.append(img1);
+        let d2 = document.createElement("div");
+        d2.setAttribute("class", "song_avatar_container");
+        let img1 = document.createElement("img");
+        img1.setAttribute("src", element.track.album.images[2].url);
+        d2.append(img1);
 
-            let d3=document.createElement("div");
-            d3.setAttribute("class", "song_description");
+        let d3 = document.createElement("div");
+        d3.setAttribute("class", "song_description");
 
-            let d4=document.createElement("div");
-            d4.setAttribute("class", "song_name");
-            let span2=document.createElement("span");
-            span2.innerText=element.track.name;
-            d4.append(span2);
+        let d4 = document.createElement("div");
+        d4.setAttribute("class", "song_name");
+        let span2 = document.createElement("span");
+        span2.innerText = element.track.name;
+        d4.append(span2);
 
-            let d5=document.createElement("div");
-            d5.setAttribute("class", "song_artist");
-            let span3=document.createElement("span");
-            span3.innerText=element.track.artists[0].name;
-            console.log(span3)
-            d5.append(span3);
+        let d5 = document.createElement("div");
+        d5.setAttribute("class", "song_artist");
+        let span3 = document.createElement("span");
+        span3.innerText = element.track.artists[0].name;
+        console.log(span3)
+        d5.append(span3);
 
-            d3.append(d4,d5);
-            d1.append(d2, d3);
-            td2.append(d1);
+        d3.append(d4, d5);
+        d1.append(d2, d3);
+        td2.append(d1);
 
-            let td3=document.createElement("td");
-            let d6=document.createElement("div");
-            d6.setAttribute("class", "song_album");
-            let span4=document.createElement("span");
-            span4.innerText=element.track.album.name;
-            d6.append(span4);
-            td3.append(d6);
+        let td3 = document.createElement("td");
+        let d6 = document.createElement("div");
+        d6.setAttribute("class", "song_album");
+        let span4 = document.createElement("span");
+        span4.innerText = element.track.album.name;
+        d6.append(span4);
+        td3.append(d6);
 
-             let td4=document.createElement("td");
-              let d7=document.createElement("div");
-              d7.setAttribute("class", "liked_btn_duration");
+        let td4 = document.createElement("td");
+        let d7 = document.createElement("div");
+        d7.setAttribute("class", "liked_btn_duration");
 
-            let span5=document.createElement("span");
-            span5.setAttribute("class","liked_btn");
+        let span5 = document.createElement("span");
+        span5.setAttribute("class", "liked_btn");
 
-            let btn1=document.createElement("button");
-            btn1.setAttribute("Class", "heart_button");
-            btn1.innerHTML=`<svg role="img" height="16" width="16" aria-hidden="true" viewBox="0 0 16 16" class="Svg-sc-ytk21e-0 uPxdw"><path d="M15.724 4.22A4.313 4.313 0 0012.192.814a4.269 4.269 0 00-3.622 1.13.837.837 0 01-1.14 0 4.272 4.272 0 00-6.21 5.855l5.916 7.05a1.128 1.128 0 001.727 0l5.916-7.05a4.228 4.228 0 00.945-3.577z"></path></svg>`;
-            btn1.addEventListener("click",function(){removelocalstrg(element, index)});
-            span5.append(btn1);
-             let span6=document.createElement("span");
-             span6.setAttribute("class","song_duration");
-             span6.innerText=millisToMinutesAndSeconds(element.track.duration_ms);
-            d7.append(span5, span6);
-            td4.append(d7);
-            tr.append(td1,td2,td3,td4);
-    
+        let btn1 = document.createElement("button");
+        btn1.setAttribute("Class", "heart_button");
+        btn1.innerHTML = `<svg role="img" height="16" width="16" aria-hidden="true" viewBox="0 0 16 16" class="Svg-sc-ytk21e-0 uPxdw"><path d="M15.724 4.22A4.313 4.313 0 0012.192.814a4.269 4.269 0 00-3.622 1.13.837.837 0 01-1.14 0 4.272 4.272 0 00-6.21 5.855l5.916 7.05a1.128 1.128 0 001.727 0l5.916-7.05a4.228 4.228 0 00.945-3.577z"></path></svg>`;
+        btn1.addEventListener("click", function () { removelocalstrg(element, index) });
+        span5.append(btn1);
+        let span6 = document.createElement("span");
+        span6.setAttribute("class", "song_duration");
+        span6.innerText = millisToMinutesAndSeconds(element.track.duration_ms);
+        d7.append(span5, span6);
+        td4.append(d7);
+        tr.append(td1, td2, td3, td4);
+
         songs_body.append(tr);
         td2.onclick = () => {
             playMusic(index);
@@ -152,18 +152,18 @@ const displaySongs = (data) => {
         }
     });
 }
-let liked=JSON.parse(localStorage.getItem("liked")) || [];
-let removelocalstrg=(element, index)=>{
-    liked.splice(index,1);
+let liked = JSON.parse(localStorage.getItem("liked")) || [];
+let removelocalstrg = (element, index) => {
+    liked.splice(index, 1);
     localStorage.setItem("liked", JSON.stringify(liked));
-    if(liked.length>0){
+    if (liked.length > 0) {
         displayData();
     }
-    else{
+    else {
         window.location.reload();
     }
-    
-    console.log(element+" :element and index: "+index);
+
+    console.log(element + " :element and index: " + index);
 }
 
 // async function displayData(playlistID) {
@@ -179,10 +179,10 @@ let removelocalstrg=(element, index)=>{
 // }
 
 function displayData() {
-        liked=JSON.parse(localStorage.getItem("liked")) || [];
-        displayBanner(liked);
-        displaySongs(liked);
-        songs_array = [...liked];
+    liked = JSON.parse(localStorage.getItem("liked")) || [];
+    displayBanner(liked);
+    displaySongs(liked);
+    songs_array = [...liked];
 }
 
 
@@ -192,10 +192,10 @@ function playMusic(index) {
     player_artist_name.textContent = songs_array[index].track.artists[0].name;
     curr_song.src = songs_array[index].track.preview_url;
 
-     // Banner image setting
-     document.getElementById("banner_img_id").setAttribute("src",songs_array[index].track.album.images[0].url)
-     document.getElementById("banner_playlist_name").innerText= songs_array[index].track.name;
-     document.getElementById("banner_playlist_discription").innerText= songs_array[index].track.artists[0].name;
+    // Banner image setting
+    document.getElementById("banner_img_id").setAttribute("src", songs_array[index].track.album.images[0].url)
+    document.getElementById("banner_playlist_name").innerText = songs_array[index].track.name;
+    document.getElementById("banner_playlist_discription").innerText = songs_array[index].track.artists[0].name;
 
     bottom_play_button.innerHTML = `<svg role="img" height="16" width="16" aria-hidden="true" viewBox="0 0 16 16">
             <path
@@ -249,3 +249,15 @@ const username = document.querySelectorAll('.user_name');
 username.forEach(element => {
     element.textContent = localStorage.getItem('spotify_current_user');
 });
+
+const back_button = document.querySelector("#back_button");
+const forward_button = document.querySelector("#forward_button");
+
+try {
+    forward_button.onclick = () => {
+        history.forward();
+    }
+    back_button.onclick = () => {
+        history.back();
+    }
+} catch { }

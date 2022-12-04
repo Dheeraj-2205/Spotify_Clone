@@ -44,7 +44,7 @@ const displayPlaylist = (data, parent) => {
     desc_container.setAttribute('class', 'short_desc_container');
 
     playlist_tab.onclick = () => {
-      localStorage.setItem("spotify_curr_playlist", JSON.stringify({name:element.name, id:element.id}));
+      localStorage.setItem("spotify_curr_playlist", JSON.stringify({ name: element.name, id: element.id }));
       location = "playlist.html";
     }
 
@@ -130,3 +130,15 @@ user_pop.onclick = () => {
 username.forEach(element => {
   element.textContent = localStorage.getItem('spotify_current_user');
 });
+
+const back_button = document.querySelector("#back_button");
+const forward_button = document.querySelector("#forward_button");
+
+try {
+  forward_button.onclick = () => {
+    history.forward();
+  }
+  back_button.onclick = () => {
+    history.back();
+  }
+} catch { }

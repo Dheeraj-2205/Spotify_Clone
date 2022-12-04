@@ -208,7 +208,7 @@ const displayAllResults = (data) => {
     album_tab.append(album_avatar_container, album_name_container, album_desc);
 
     album_tab.onclick = () => {
-      localStorage.setItem("spotify_current_album", JSON.stringify({name:element.name, id:element.id}));
+      localStorage.setItem("spotify_current_album", JSON.stringify({ name: element.name, id: element.id }));
       location = "album.html";
     };
 
@@ -305,7 +305,7 @@ const displayAlbumResult = (data) => {
     album_tab.append(album_avatar_container, album_name_container, album_desc);
 
     album_tab.onclick = () => {
-      localStorage.setItem("spotify_current_album", JSON.stringify({name:element.name, id:element.id, img:element.images[0].url}));
+      localStorage.setItem("spotify_current_album", JSON.stringify({ name: element.name, id: element.id, img: element.images[0].url }));
       location = "album.html";
     };
 
@@ -319,7 +319,7 @@ const displayPlaylistResult = (data) => {
   search_playlists_section.innerHTML = null;
   const playlist_container = document.createElement("div");
   playlist_container.setAttribute("class", "album_container");
-  
+
   playlists.forEach((element, index) => {
     const playlist_tab = document.createElement("div");
     const playlist_avatar_container = document.createElement("div");
@@ -339,7 +339,7 @@ const displayPlaylistResult = (data) => {
     playlist_tab.append(playlist_avatar_container, playlist_name_container, playlist_desc);
 
     playlist_tab.onclick = () => {
-      localStorage.setItem("spotify_curr_playlist", JSON.stringify({name:element.name, id:element.id}));
+      localStorage.setItem("spotify_curr_playlist", JSON.stringify({ name: element.name, id: element.id }));
       location = "playlist.html";
     };
 
@@ -485,3 +485,16 @@ onload = () => {
   search_bar.value = localStorage.getItem("spotify_search_query")
   searchFunction();
 }
+
+// forward and back buttons
+const back_button = document.querySelector("#back_button");
+const forward_button = document.querySelector("#forward_button");
+
+try {
+  forward_button.onclick = () => {
+    history.forward();
+  }
+  back_button.onclick = () => {
+    history.back();
+  }
+} catch { }

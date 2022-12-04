@@ -210,3 +210,15 @@ const username = document.querySelectorAll('.user_name');
 username.forEach(element => {
   element.textContent = localStorage.getItem('spotify_current_user');
 });
+
+const back_button = document.querySelector("#back_button");
+const forward_button = document.querySelector("#forward_button");
+
+try {
+  forward_button.onclick = () => {
+    history.forward();
+  }
+  back_button.onclick = () => {
+    history.back();
+  }
+} catch { }
