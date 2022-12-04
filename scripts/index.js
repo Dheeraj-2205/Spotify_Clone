@@ -106,7 +106,7 @@ const openPlayList = (obj) => {
     localStorage.setItem("spotify_curr_playlist", JSON.stringify({name:obj.name, id:obj.id}));
     location = '/pages/playlist.html';
   } else {
-    showLoginPop(obj.background);
+    showLoginPop(obj.images[0].url);
   }
 }
 

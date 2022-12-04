@@ -327,6 +327,7 @@ a[href="index.html"] p {
   color: var(--faint_white);
   font-size: 13px;
   font-weight: bolder;
+  border: none;
 }
 
 #close_btn:hover {
