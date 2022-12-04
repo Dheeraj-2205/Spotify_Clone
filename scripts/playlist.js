@@ -19,7 +19,9 @@ const next_button = document.querySelector('#next_button');
 const progress_bar = document.querySelector('#progress_bar');
 const curr_song_time = document.querySelector('#curr_song_time');
 let TOKEN = (localStorage.getItem("spotify_token")) || "";
-let playlistID = localStorage.getItem("spotify_curr_playlist") || ""; // pass playlist name also
+let local_obj = JSON.parse(localStorage.getItem("spotify_curr_playlist")) || "";
+let playlistID = local_obj.id;
+document.title = local_obj.name;
 let banner = document.querySelector(".banner");
 let songs_body = document.querySelector("#songs_body");
 let play_button = document.querySelector('#play_button');
@@ -68,83 +70,80 @@ const displayBanner = (data) => {
         </div>
         <div class="banner_description">
             <div class="playlist_header">Playlist</div>
-            <div class="playlist_name" id="banner_playlist_name">${data[0].track.name}</div>
-            <div class="playlist_description" id="banner_playlist_discription">${data[0].track.artists[0].name}</div>
+            <div class="playlist_name" id="banner_playlist_name">${local_obj.name}</div>
+            <div class="playlist_description" id="banner_playlist_discription">${data[0].track.artists[0].name}, etc</div>
             <div class="playlist_info">Spotify &nbsp;.&nbsp; 20 Songs</div>
         </div>`;
     banner.innerHTML = str;
 }
 
 const displaySongs = (data) => {
-    console.log("data: "+data)
     songs_body.innerHTML = "";
     data.map((element, index) => {
-        console.log("element: "+element+index);
         let tr = document.createElement('tr');
-        tr.setAttribute("class","songRow");
-            let td1=document.createElement("td");
-            let span1=document.createElement("span");
-            span1.innerText=index + 1;
-            td1.append(span1);
+        tr.setAttribute("class", "songRow");
+        let td1 = document.createElement("td");
+        let span1 = document.createElement("span");
+        span1.innerText = index + 1;
+        td1.append(span1);
 
-            let td2=document.createElement("td");
+        let td2 = document.createElement("td");
 
-            let d1=document.createElement("div");
-            d1.setAttribute("class", "title_container");
+        let d1 = document.createElement("div");
+        d1.setAttribute("class", "title_container");
 
-            let d2=document.createElement("div");
-            d2.setAttribute("class", "song_avatar_container");
-            let img1=document.createElement("img");
-            img1.setAttribute("src",element.track.album.images[2].url);
-            d2.append(img1);
+        let d2 = document.createElement("div");
+        d2.setAttribute("class", "song_avatar_container");
+        let img1 = document.createElement("img");
+        img1.setAttribute("src", element.track.album.images[2].url);
+        d2.append(img1);
 
-            let d3=document.createElement("div");
-            d3.setAttribute("class", "song_description");
+        let d3 = document.createElement("div");
+        d3.setAttribute("class", "song_description");
 
-            let d4=document.createElement("div");
-            d4.setAttribute("class", "song_name");
-            let span2=document.createElement("span");
-            span2.innerText=element.track.name;
-            d4.append(span2);
+        let d4 = document.createElement("div");
+        d4.setAttribute("class", "song_name");
+        let span2 = document.createElement("span");
+        span2.innerText = element.track.name;
+        d4.append(span2);
 
-            let d5=document.createElement("div");
-            d5.setAttribute("class", "song_artist");
-            let span3=document.createElement("span");
-            span3.innerText=element.track.artists[0].name;
-            console.log(span3)
-            d5.append(span3);
+        let d5 = document.createElement("div");
+        d5.setAttribute("class", "song_artist");
+        let span3 = document.createElement("span");
+        span3.innerText = element.track.artists[0].name;
+        d5.append(span3);
 
-            d3.append(d4,d5);
-            d1.append(d2, d3);
-            td2.append(d1);
+        d3.append(d4, d5);
+        d1.append(d2, d3);
+        td2.append(d1);
 
-            let td3=document.createElement("td");
-            let d6=document.createElement("div");
-            d6.setAttribute("class", "song_album");
-            let span4=document.createElement("span");
-            span4.innerText=element.track.album.name;
-            d6.append(span4);
-            td3.append(d6);
+        let td3 = document.createElement("td");
+        let d6 = document.createElement("div");
+        d6.setAttribute("class", "song_album");
+        let span4 = document.createElement("span");
+        span4.innerText = element.track.album.name;
+        d6.append(span4);
+        td3.append(d6);
 
-             let td4=document.createElement("td");
-              let d7=document.createElement("div");
-              d7.setAttribute("class", "liked_btn_duration");
+        let td4 = document.createElement("td");
+        let d7 = document.createElement("div");
+        d7.setAttribute("class", "liked_btn_duration");
 
-            let span5=document.createElement("span");
-            span5.setAttribute("class","liked_btn");
+        let span5 = document.createElement("span");
+        span5.setAttribute("class", "liked_btn");
 
-            let btn1=document.createElement("button");
-            btn1.setAttribute("Class", "heart_button");
-            btn1.innerHTML=`<svg role="img" height="16" width="16" aria-hidden="true" viewBox="0 0 16 16" class="Svg-sc-ytk21e-0 uPxdw"><path d="M1.69 2A4.582 4.582 0 018 2.023 4.583 4.583 0 0111.88.817h.002a4.618 4.618 0 013.782 3.65v.003a4.543 4.543 0 01-1.011 3.84L9.35 14.629a1.765 1.765 0 01-2.093.464 1.762 1.762 0 01-.605-.463L1.348 8.309A4.582 4.582 0 011.689 2zm3.158.252A3.082 3.082 0 002.49 7.337l.005.005L7.8 13.664a.264.264 0 00.311.069.262.262 0 00.09-.069l5.312-6.33a3.043 3.043 0 00.68-2.573 3.118 3.118 0 00-2.551-2.463 3.079 3.079 0 00-2.612.816l-.007.007a1.501 1.501 0 01-2.045 0l-.009-.008a3.082 3.082 0 00-2.121-.861z"></path></svg>`;
-            btn1.addEventListener("click",function(){addtolocalstrg(element, index)});
-            span5.append(btn1);
-             let span6=document.createElement("span");
-             span6.setAttribute("class","song_duration");
-             span6.innerText=millisToMinutesAndSeconds(element.track.duration_ms);
-            d7.append(span5, span6);
-            td4.append(d7);
-            tr.append(td1,td2,td3,td4);
-    
+        let btn1 = document.createElement("button");
+        btn1.setAttribute("Class", "heart_button");
+        btn1.innerHTML = `<svg role="img" height="16" width="16" aria-hidden="true" viewBox="0 0 16 16" class="Svg-sc-ytk21e-0 uPxdw"><path d="M1.69 2A4.582 4.582 0 018 2.023 4.583 4.583 0 0111.88.817h.002a4.618 4.618 0 013.782 3.65v.003a4.543 4.543 0 01-1.011 3.84L9.35 14.629a1.765 1.765 0 01-2.093.464 1.762 1.762 0 01-.605-.463L1.348 8.309A4.582 4.582 0 011.689 2zm3.158.252A3.082 3.082 0 002.49 7.337l.005.005L7.8 13.664a.264.264 0 00.311.069.262.262 0 00.09-.069l5.312-6.33a3.043 3.043 0 00.68-2.573 3.118 3.118 0 00-2.551-2.463 3.079 3.079 0 00-2.612.816l-.007.007a1.501 1.501 0 01-2.045 0l-.009-.008a3.082 3.082 0 00-2.121-.861z"></path></svg>`;
+        btn1.addEventListener("click", function () { addtolocalstrg(element, index) });
+        span5.append(btn1);
+        let span6 = document.createElement("span");
+        span6.setAttribute("class", "song_duration");
+        span6.innerText = millisToMinutesAndSeconds(element.track.duration_ms);
+        d7.append(span5, span6);
+        td4.append(d7);
+        tr.append(td1, td2, td3, td4);
+
         songs_body.append(tr);
         td2.onclick = () => {
             playMusic(index);
@@ -153,13 +152,12 @@ const displaySongs = (data) => {
     });
 }
 
-var liked=JSON.parse(localStorage.getItem("liked")) || [];
+var liked = JSON.parse(localStorage.getItem("liked")) || [];
 
 // liked function
-let addtolocalstrg=(element, index)=>{
+let addtolocalstrg = (element, index) => {
     liked.push(element);
     localStorage.setItem("liked", JSON.stringify(liked));
-    console.log(liked);
 }
 
 async function displayData(playlistID) {
@@ -181,9 +179,9 @@ function playMusic(index) {
     curr_song.src = songs_array[index].track.preview_url;
 
     // Banner image setting
-    document.getElementById("banner_img_id").setAttribute("src",songs_array[index].track.album.images[0].url)
-    document.getElementById("banner_playlist_name").innerText= songs_array[index].track.name;
-    document.getElementById("banner_playlist_discription").innerText= songs_array[index].track.artists[0].name;
+    document.getElementById("banner_img_id").setAttribute("src", songs_array[index].track.album.images[0].url)
+    document.getElementById("banner_playlist_name").innerText = songs_array[index].track.name;
+    document.getElementById("banner_playlist_discription").innerText = songs_array[index].track.artists[0].name;
 
     bottom_play_button.innerHTML = `<svg role="img" height="16" width="16" aria-hidden="true" viewBox="0 0 16 16">
             <path

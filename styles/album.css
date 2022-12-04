@@ -1,0 +1,14 @@
+thead th:nth-child(1) {
+  width: 5%;
+  padding-left: 10px;
+}
+
+thead th:nth-child(2) {
+  width: 100%;
+}
+
+thead th:nth-child(3) {
+  width: 3%;
+  padding-right: 10px;
+  text-align: right;
+}

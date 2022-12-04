@@ -32,6 +32,10 @@
   margin: 0;
   font-size: 12px;
   font-weight: 300;
+  width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #player_artist_name {
@@ -144,6 +148,7 @@
   .progress_container {
     width: 300px;
   }
+
   .player_left {
     width: auto;
   }

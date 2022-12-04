@@ -92,7 +92,7 @@ const showLoginPop = (background) => {
 
 const openPlayList = (obj) => {
   if (spotify_login_flag) {
-    localStorage.setItem('spotify_curr_playlist', obj.id);
+    localStorage.setItem("spotify_curr_playlist", JSON.stringify({name:obj.name, id:obj.id}));
     location = '/pages/playlist.html';
   } else {
     showLoginPop(obj.background);
@@ -124,7 +124,7 @@ const displayPlaylist = (data, parent) => {
     desc_container.setAttribute('class', 'short_desc_container');
 
     playlist_tab.onclick = () => {
-      openPlayList({ "id": element.id, "background": element.images[0].url });
+      openPlayList(element);
     }
 
     desc_container.append(title, description);
