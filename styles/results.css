@@ -369,6 +369,18 @@ button.selected_filter {
   gap: 10px;
 }
 
+.all_result_artist_container .artist_tab:nth-child(10) {
+  display: none;
+}
+
+.all_result_artist_container .artist_tab:nth-child(9) {
+  display: none;
+}
+
+.all_result_artist_container .artist_tab:nth-child(8) {
+  display: none;
+}
+
 .artist_avatar_container {
   position: relative;
 }

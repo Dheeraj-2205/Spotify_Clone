@@ -254,6 +254,46 @@ const displayAllResults = async (data) => {
   let all_albums = await createAlbums(data.albums.items);
   let all_artists = await createArtists(data.artists.items);
 
+  /*
+
+  const all_result_top = document.createElement("div");
+  const all_result_top_left = document.createElement("div");
+  const all_result_top_right = document.createElement("div");
+  const top_song_container = document.createElement("div");
+  const top_play_button = document.createElement("div");
+  
+  all_result_top_left.innerHTML = `<div class="result_header">Top result</div>`;
+  top_song_container.innerHTML = `
+  <div class="top_song_image_container">
+    <img src="${data.tracks.items[0].album.images[0].url}">
+  </div>
+  <div class="top_song_name">
+    <span>${data.tracks.items[0].name}</span>
+  </div>
+  <div class="top_song_artist">
+    <span class="faint_white">${data.tracks.items[0].artists[0].name}</span>
+    <div class="result_type">SONG</div>
+  </div>
+  `;
+  top_play_button.innerHTML = `
+  <svg role="img" height="28" width="28" aria-hidden="true" viewBox="0 0 24 24">
+    <path
+      d="M7.05 3.606l13.49 7.788a.7.7 0 010 1.212L7.05 20.394A.7.7 0 016 19.788V4.212a.7.7 0 011.05-.606z">
+    </path>
+  </svg>
+  `;
+
+  all_result_top.setAttribute("class", "all_result_top");
+  all_result_top_left.setAttribute("class", "all_result_top_left");
+  all_result_top_right.setAttribute("class", "all_result_top_right");
+  top_song_container.setAttribute("class", "top_song_container");
+  top_play_button.setAttribute("class", "play_button");
+
+  top_song_container.append(top_play_button);
+  all_result_top_left.append(top_song_container);
+  all_result_top.append(all_result_top_left, all_result_top_right);
+  */
+
   let result = `
       <div class="all_result_top">
         <div class="all_result_top_left">
