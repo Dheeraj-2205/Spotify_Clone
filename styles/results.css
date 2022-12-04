@@ -160,7 +160,7 @@ button.selected_filter {
   transition: background-color ease 300ms;
   position: relative;
   height: 100%;
-  justify-content: center;
+  justify-content: end;
 }
 
 .top_song_container:hover {
@@ -169,7 +169,7 @@ button.selected_filter {
 }
 
 .top_song_image_container {
-  width: 30%;
+  width: 50%;
 }
 
 .top_song_image_container>img {
@@ -599,6 +599,9 @@ td:last-child {
 @media (max-width : 1300px) {
   .left_nav {
     width: 200px;
+  }
+  .top_song_container {
+    justify-content: center;
   }
 }
 
