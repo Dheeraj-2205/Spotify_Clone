@@ -248,12 +248,6 @@ const displayAllResults = (data) => {
 
     artist_tab.append(artist_avatar_container, artist_name_container, artist_desc);
 
-    artist_tab.onclick = () => {
-      localStorage.setItem("spotify_current_artist", element.id);
-      location = "artist.html";
-    };
-
-
     artist_container.append(artist_tab);
   });
 
@@ -379,11 +373,6 @@ const displayArtistResult = (data) => {
     artist_desc.setAttribute("class", "faint_white");
 
     artist_tab.append(artist_avatar_container, artist_name_container, artist_desc);
-
-    artist_tab.onclick = () => {
-      localStorage.setItem("spotify_current_artist", element.id);
-      location = "artist.html";
-    };
 
     artist_container.append(artist_tab);
   });
