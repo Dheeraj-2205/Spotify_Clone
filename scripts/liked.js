@@ -19,6 +19,7 @@ const next_button = document.querySelector('#next_button');
 const progress_bar = document.querySelector('#progress_bar');
 const curr_song_time = document.querySelector('#curr_song_time');
 let TOKEN = (localStorage.getItem("spotify_token")) || "";
+let User_name = (localStorage.getItem("spotify_current_user")) || "";
 let playlistID = localStorage.getItem("spotify_curr_playlist") || ""; // pass playlist name also
 let banner = document.querySelector(".banner");
 let songs_body = document.querySelector("#songs_body");
@@ -64,13 +65,13 @@ curr_song.ontimeupdate = () => {
 const displayBanner = (data) => {
     let str = `
         <div class="banner_image_container">
-            <img class="banner_image" id="banner_img_id" src="${data[0].track.album.images[0].url}">
+            <img class="banner_image" id="banner_img_id" src="https://t.scdn.co/images/3099b3803ad9496896c43f22fe9be8c4.png">
         </div>
         <div class="banner_description">
             <div class="playlist_header">Playlist</div>
-            <div class="playlist_name" id="banner_playlist_name">${data[0].track.name}</div>
-            <div class="playlist_description" id="banner_playlist_discription">${data[0].track.artists[0].name}</div>
-            <div class="playlist_info">Spotify &nbsp;.&nbsp; 20 Songs</div>
+            <div class="playlist_name" id="banner_playlist_name">Liked Songs</div>
+            <div class="playlist_description" id="banner_playlist_discription"></div>
+            <div class="playlist_info">${User_name} &nbsp;.&nbsp; ${data.length}</div>
         </div>`;
     banner.innerHTML = str;
 }
@@ -82,6 +83,7 @@ const displaySongs = (data) => {
         console.log("element: "+element+index);
         let tr = document.createElement('tr');
         tr.setAttribute("class","songRow");
+
             let td1=document.createElement("td");
             let span1=document.createElement("span");
             span1.innerText=index + 1;
@@ -135,8 +137,8 @@ const displaySongs = (data) => {
 
             let btn1=document.createElement("button");
             btn1.setAttribute("Class", "heart_button");
-            btn1.innerHTML=`<svg role="img" height="16" width="16" aria-hidden="true" viewBox="0 0 16 16" class="Svg-sc-ytk21e-0 uPxdw"><path d="M1.69 2A4.582 4.582 0 018 2.023 4.583 4.583 0 0111.88.817h.002a4.618 4.618 0 013.782 3.65v.003a4.543 4.543 0 01-1.011 3.84L9.35 14.629a1.765 1.765 0 01-2.093.464 1.762 1.762 0 01-.605-.463L1.348 8.309A4.582 4.582 0 011.689 2zm3.158.252A3.082 3.082 0 002.49 7.337l.005.005L7.8 13.664a.264.264 0 00.311.069.262.262 0 00.09-.069l5.312-6.33a3.043 3.043 0 00.68-2.573 3.118 3.118 0 00-2.551-2.463 3.079 3.079 0 00-2.612.816l-.007.007a1.501 1.501 0 01-2.045 0l-.009-.008a3.082 3.082 0 00-2.121-.861z"></path></svg>`;
-            btn1.addEventListener("click",function(){addtolocalstrg(element, index)});
+            btn1.innerHTML=`<svg role="img" height="16" width="16" aria-hidden="true" viewBox="0 0 16 16" class="Svg-sc-ytk21e-0 uPxdw"><path d="M15.724 4.22A4.313 4.313 0 0012.192.814a4.269 4.269 0 00-3.622 1.13.837.837 0 01-1.14 0 4.272 4.272 0 00-6.21 5.855l5.916 7.05a1.128 1.128 0 001.727 0l5.916-7.05a4.228 4.228 0 00.945-3.577z"></path></svg>`;
+            btn1.addEventListener("click",function(){removelocalstrg(element, index)});
             span5.append(btn1);
              let span6=document.createElement("span");
              span6.setAttribute("class","song_duration");
@@ -152,27 +154,39 @@ const displaySongs = (data) => {
         }
     });
 }
-
-var liked=JSON.parse(localStorage.getItem("liked")) || [];
-
-// liked function
-let addtolocalstrg=(element, index)=>{
-    liked.push(element);
+let liked=JSON.parse(localStorage.getItem("liked")) || [];
+let removelocalstrg=(element, index)=>{
+    liked.splice(index,1);
     localStorage.setItem("liked", JSON.stringify(liked));
-    console.log(liked);
-}
-
-async function displayData(playlistID) {
-    try {
-        let data = await getTrack(playlistID, TOKEN);
-        displayBanner(data.items)
-        displaySongs(data.items);
-        songs_array = [...data.items];
-    } catch (error) {
-        await refreshToken();
+    if(liked.length>0){
+        displayData();
     }
-
+    else{
+        window.location.reload();
+    }
+    
+    console.log(element+" :element and index: "+index);
 }
+
+// async function displayData(playlistID) {
+//     try {
+//         let data = await getTrack(playlistID, TOKEN);
+//         displayBanner(data.items);
+//         displaySongs(data.items);
+//         songs_array = [...data.items];
+//     } catch (error) {
+//         await refreshToken();
+//     }
+
+// }
+
+function displayData() {
+        liked=JSON.parse(localStorage.getItem("liked")) || [];
+        displayBanner(liked);
+        displaySongs(liked);
+        songs_array = [...liked];
+}
+
 
 function playMusic(index) {
     playing_img.src = songs_array[index].track.album.images[2].url;
@@ -180,10 +194,10 @@ function playMusic(index) {
     player_artist_name.textContent = songs_array[index].track.artists[0].name;
     curr_song.src = songs_array[index].track.preview_url;
 
-    // Banner image setting
-    document.getElementById("banner_img_id").setAttribute("src",songs_array[index].track.album.images[0].url)
-    document.getElementById("banner_playlist_name").innerText= songs_array[index].track.name;
-    document.getElementById("banner_playlist_discription").innerText= songs_array[index].track.artists[0].name;
+     // Banner image setting
+     document.getElementById("banner_img_id").setAttribute("src",songs_array[index].track.album.images[0].url)
+     document.getElementById("banner_playlist_name").innerText= songs_array[index].track.name;
+     document.getElementById("banner_playlist_discription").innerText= songs_array[index].track.artists[0].name;
 
     bottom_play_button.innerHTML = `<svg role="img" height="16" width="16" aria-hidden="true" viewBox="0 0 16 16">
             <path
@@ -230,7 +244,7 @@ previous_button.onclick = () => {
     }
 }
 
-displayData(playlistID);
+displayData();
 
 const username = document.querySelectorAll('.user_name');
 
