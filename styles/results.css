@@ -112,6 +112,7 @@ button {
   border-radius: 500px;
   color: white;
   cursor: pointer;
+  border: none;
 }
 
 button.selected_filter {
@@ -121,6 +122,14 @@ button.selected_filter {
 
 .search_results {
   border: 1px solid white;
+}
+
+.search_songs_section,
+.search_albums_section,
+.search_artists_section,
+.search_playlists_section,
+.search_artists_section {
+  display: none;
 }
 
 .all_result_top {
@@ -293,7 +302,9 @@ button.selected_filter {
   gap: 10px;
 }
 
-.album_container .album_tab:nth-child(8), .album_container .album_tab:nth-child(9), .album_container .album_tab:nth-child(10) {
+.album_container .album_tab:nth-child(8),
+.album_container .album_tab:nth-child(9),
+.album_container .album_tab:nth-child(10) {
   display: none;
 }
 
@@ -369,6 +380,11 @@ button.selected_filter {
   gap: 10px;
 }
 
+.artist_tab:hover {
+  background-color: rgb(37, 37, 37);
+  cursor: pointer;
+}
+
 .all_result_artist_container .artist_tab:nth-child(10) {
   display: none;
 }
@@ -424,6 +440,11 @@ button.selected_filter {
   background-color: #1ed760;
   bottom: 10px;
   visibility: visible;
+}
+
+#filter_podcasts_button,
+#filter_profiles_button {
+  display: none;
 }
 
 /* songs section */
@@ -542,20 +563,36 @@ td:last-child {
 
 
 @media (max-width : 1670px) {
-  .album_container, .artist_container {
+
+  .album_container,
+  .artist_container {
     grid-template-columns: repeat(6, 1fr);
   }
-  .all_result_album_container .album_tab:nth-child(7), .all_result_artist_container .artist_tab:nth-child(7) {
+
+  .all_result_album_container .album_tab:nth-child(7),
+  .all_result_artist_container .artist_tab:nth-child(7) {
     display: none;
+  }
+
+  .top_song_name {
+    font-size: 2rem;
   }
 }
 
 @media (max-width : 1460px) {
-  .album_container, .artist_container {
+
+  .album_container,
+  .artist_container {
     grid-template-columns: repeat(5, 1fr);
   }
-  .all_result_album_container .album_tab:nth-child(6), .all_result_artist_container .artist_tab:nth-child(6) {
+
+  .all_result_album_container .album_tab:nth-child(6),
+  .all_result_artist_container .artist_tab:nth-child(6) {
     display: none;
+  }
+
+  .top_song_name {
+    font-size: 1.5rem;
   }
 }
 
@@ -566,12 +603,25 @@ td:last-child {
 }
 
 @media (max-width : 1100px) {
-  .album_container, .artist_container {
+
+  .album_container,
+  .artist_container {
     grid-template-columns: repeat(4, 1fr);
   }
-  .all_result_album_container .album_tab:nth-child(5), .all_result_artist_container .artist_tab:nth-child(5) {
+
+  .all_result_album_container .album_tab:nth-child(5),
+  .all_result_artist_container .artist_tab:nth-child(5) {
     display: none;
   }
+
+  .results_filter_container {
+    font-size: 0.7rem;
+  }
+
+  table {
+    font-size: 0.7rem;
+    font-weight: 500;
+  }  
 }
 
 @media (max-width : 900px) {
@@ -593,14 +643,78 @@ td:last-child {
     left: -7px;
   }
 
-  .album_container, .artist_container {
+  .album_container,
+  .artist_container {
     grid-template-columns: repeat(3, 1fr);
   }
-  .all_result_album_container .album_tab:nth-child(4), .all_result_artist_container .artist_tab:nth-child(4) {
+
+  .all_result_album_container .album_tab:nth-child(4),
+  .all_result_artist_container .artist_tab:nth-child(4) {
     display: none;
   }
 }
 
-@media (max-width: 650px) {}
+@media (max-width: 750px) {
+  thead tr>th:nth-child(3), tbody tr>td:nth-child(3) {
+    display: none;
+  }
+}
 
-@media (max-width: 500px) {}
+@media (max-width: 850px) {
+  .all_result_top {
+    flex-direction: column;
+  }
+
+  .all_result_top_left {
+    width: 100%;
+  }
+
+  .all_result_top_right {
+    width: 100%;
+  }
+  .artist_avatar_container>img {
+    height: auto;
+  }
+}
+
+@media (max-width: 650px) {
+  .results_filter_container,
+  .all_result_top_right {
+    font-size: 0.8rem;
+  }
+
+  .result_header,
+  .top_song_name {
+    font-size: 1.5rem;
+  }
+
+  .result_type {
+    font-size: 0.75rem;
+  }
+
+  .album_name_container, .artist_name_container {
+    font-size: 0.8rem;
+  }
+
+  .album_tab .faint_white, .artist_tab .faint_white {
+    font-size: 0.7rem;
+  }
+
+  .page_right {
+    padding: 0 5px;
+  }
+
+  .album_container,
+  .artist_container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 450px) {
+  thead tr>th:nth-child(4 ), tbody tr>td:nth-child(4 ) {
+    display: none;
+  }
+  .page_right {
+    height: calc(100vh - 100px);
+  }
+}
