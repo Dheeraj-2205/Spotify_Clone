@@ -97,6 +97,10 @@ body {
   font-weight: 900;
   font-size: 5rem;
   transition: font ease 400ms;
+  width: calc(100vw - 1000px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .playlist_description {
@@ -193,6 +197,7 @@ thead th:nth-child(3) {
 thead th:nth-child(4) {
   width: 5%;
   padding-right: 10px;
+  text-align: right;
 }
 
 tbody {
@@ -272,44 +277,127 @@ td:last-child {
   color: white;
 }
 
-@media (max-width: 750px) {
-  .playlist_name {
-    font-size: 60px;
-  }
-}
 
 /* Like button CSS */
 
-.liked_btn_duration{
+.liked_btn_duration {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
-.liked_btn{
+
+.liked_btn {
   margin-right: 5px;
 }
-.song_duration{
+
+.song_duration {
   margin-left: 5px;
 }
-.heart_button{
-background-color: transparent; 
-border-style: none;
-visibility: hidden;
-color: #7e948c;
-cursor: pointer;
+
+.heart_button {
+  background-color: transparent;
+  border-style: none;
+  visibility: hidden;
+  color: #7e948c;
+  cursor: pointer;
 }
 
-.songRow:hover .heart_button{
+.songRow:hover .heart_button {
   visibility: visible;
-  
- }
 
- .heart_button:hover{
+}
+
+.heart_button:hover {
   color: #00ffa2;
- }
+}
 
 .uPxdw {
   fill: currentcolor;
   height: 16px;
   width: 16px;
+}
+
+@media (max-width : 1550px) {
+
+  .song_name,
+  .song_album {
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+@media (max-width: 1300px) {
+  .playlist_name {
+    width: 400px;
+  }
+}
+
+@media (max-width : 900px) {
+  .playlist_name {
+    font-size: 3rem;
+  }
+
+  .song_album {
+    width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+@media (max-width: 750px) {
+  .playlist_name {
+    font-size: 90%;
+    width: 200px;
+  }
+
+  thead tr>th:nth-child(3),
+  tbody tr>td:nth-child(3) {
+    display: none;
+  }
+
+  table {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width : 600px) {
+  .playlist_name {
+    font-size: 2rem;
+  }
+
+  .song_album {
+    width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .banner {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .banner>div {
+    width: 100%;
+  }
+
+  .banner_image_container {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 450px) {
+
+  thead tr>th:nth-child(4),
+  tbody tr>td:nth-child(4) {
+    display: none;
+  }
+
+  .page_right {
+    height: calc(100vh - 100px);
+  }
 }

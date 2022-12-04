@@ -42,6 +42,17 @@ async function getTrack(playlistID, TOKEN) {
   return data;
 }
 
+async function getAlbumTrack(albumID, TOKEN) {
+  let res = await fetch(`https://api.spotify.com/v1/albums/${albumID}/tracks?offset=0&limit=20`, {
+    headers: {
+      "Authorization": `Bearer ${TOKEN}`,
+      "Content-Type": "application/json"
+    }
+  });
+  let data = await res.json();
+  return data;
+}
+
 async function getAllSearchResults(query, type, limit, TOKEN) {
   let response = await fetch(`https://api.spotify.com/v1/search?type=${type.join()}&q=${query}?offset=0&limit=${limit}`, {
     headers: {
@@ -53,4 +64,4 @@ async function getAllSearchResults(query, type, limit, TOKEN) {
   return data;
 }
 
-export { refreshToken, getPlaylists, getTrack, getAllSearchResults };
+export { refreshToken, getPlaylists, getTrack, getAllSearchResults, getAlbumTrack };

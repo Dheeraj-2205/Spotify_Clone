@@ -44,7 +44,7 @@ const displayPlaylist = (data, parent) => {
     desc_container.setAttribute('class', 'short_desc_container');
 
     playlist_tab.onclick = () => {
-      localStorage.setItem('spotify_curr_playlist', element.id);
+      localStorage.setItem("spotify_curr_playlist", JSON.stringify({name:element.name, id:element.id}));
       location = "playlist.html";
     }
 

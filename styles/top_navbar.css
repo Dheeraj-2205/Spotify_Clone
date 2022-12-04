@@ -203,9 +203,6 @@
 }
 
 @media (max-width: 650px) {
-  .top_nav {
-    padding: 10px 10px;
-  }
   .top_nav_left>div:nth-child(1), .top_nav_left>div:nth-child(2) {
     display: none;
   }
