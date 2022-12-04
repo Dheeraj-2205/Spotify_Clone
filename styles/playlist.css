@@ -277,3 +277,39 @@ td:last-child {
     font-size: 60px;
   }
 }
+
+/* Like button CSS */
+
+.liked_btn_duration{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.liked_btn{
+  margin-right: 5px;
+}
+.song_duration{
+  margin-left: 5px;
+}
+.heart_button{
+background-color: transparent; 
+border-style: none;
+visibility: hidden;
+color: #7e948c;
+cursor: pointer;
+}
+
+.songRow:hover .heart_button{
+  visibility: visible;
+  
+ }
+
+ .heart_button:hover{
+  color: #00ffa2;
+ }
+
+.uPxdw {
+  fill: currentcolor;
+  height: 16px;
+  width: 16px;
+}

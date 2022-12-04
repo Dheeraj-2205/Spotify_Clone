@@ -1,0 +1,25 @@
+.liked_btn_duration{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.liked_btn{
+    margin-right: 5px;
+}
+.song_duration{
+    margin-left: 5px;
+}
+.heart_button{
+    visibility: visible !important;
+ background-color: transparent !important;
+ border-style: none !important;
+fill: #00f056 !important;
+
+cursor: pointer;
+}
+
+.uPxdw {
+    fill: #00f056 !important;
+    height: 16px;
+    width: 16px;
+}

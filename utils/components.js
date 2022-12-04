@@ -71,7 +71,7 @@ return `
       </a>
     </div>
     <div>
-      <a href="#">
+      <a href="/pages/liked.html">
         <div class="left_nav_icon_container">
           <div class="icon_special_container liked_songs">
             <svg role="img" height="12" width="12" aria-hidden="true" viewBox="0 0 16 16">
