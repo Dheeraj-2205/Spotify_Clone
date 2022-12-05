@@ -28,6 +28,8 @@ let play_button = document.querySelector('#play_button');
 let songs_array = [];
 let curr_song = new Audio("");
 let curr_song_index = 0;
+let user = localStorage.getItem("spotify_current_user");
+let liked_songs = JSON.parse(localStorage.getItem("spotify_liked_songs")) || {};
 
 const user_pop = document.querySelectorAll('.user_pop')[0];
 const user_options = document.querySelector('#user_options');
@@ -61,6 +63,22 @@ curr_song.ontimeupdate = () => {
   }
   let percent = (curr_time / 30) * 100;
   progress_bar.style.right = `${100 - percent}%`;
+}
+
+const addToLiked = (obj) => {
+  let array = liked_songs[user];
+  if (!array) {
+    liked_songs[user] = [];
+    liked_songs[user].push(obj);
+  } else {
+    let duplicate = liked_songs[user].filter(element => JSON.stringify(element) == JSON.stringify(obj));
+    if (duplicate.length == 0) {
+      liked_songs[user].push(obj);
+    } else {
+      alert("This song is already liked by you");
+    }
+  }
+  localStorage.setItem("spotify_liked_songs", JSON.stringify(liked_songs));
 }
 
 const displayBanner = (data) => {
@@ -117,14 +135,38 @@ const displaySongs = (data) => {
     d1.append(d2, d3);
     td2.append(d1);
 
+
     let td4 = document.createElement("td");
     let d7 = document.createElement("div");
     d7.setAttribute("class", "liked_btn_duration");
 
+    let span5 = document.createElement("span");
+    span5.setAttribute("class", "liked_btn");
+
+    let btn1 = document.createElement("button");
+    btn1.setAttribute("Class", "heart_button");
+    btn1.innerHTML = `<svg role="img" height="16" width="16" aria-hidden="true" viewBox="0 0 16 16" class="Svg-sc-ytk21e-0 uPxdw"><path d="M1.69 2A4.582 4.582 0 018 2.023 4.583 4.583 0 0111.88.817h.002a4.618 4.618 0 013.782 3.65v.003a4.543 4.543 0 01-1.011 3.84L9.35 14.629a1.765 1.765 0 01-2.093.464 1.762 1.762 0 01-.605-.463L1.348 8.309A4.582 4.582 0 011.689 2zm3.158.252A3.082 3.082 0 002.49 7.337l.005.005L7.8 13.664a.264.264 0 00.311.069.262.262 0 00.09-.069l5.312-6.33a3.043 3.043 0 00.68-2.573 3.118 3.118 0 00-2.551-2.463 3.079 3.079 0 00-2.612.816l-.007.007a1.501 1.501 0 01-2.045 0l-.009-.008a3.082 3.082 0 00-2.121-.861z"></path></svg>`;
+    btn1.onclick = () => {
+      let obj = {};
+      obj.track = {};
+      obj.track.album = {}
+      obj.track.album.images = [{}, {}, {}];
+      obj.track.album.images[2].url = local_obj.img;
+      obj.track.album.images[0].url = local_obj.img;
+      obj.track.album.name = local_obj.name;
+      obj.track.name = element.name;
+      obj.track.artists = [{}];
+      obj.track.artists[0].name = element.artists[0].name;
+      obj.track.duration_ms = element.duration_ms;
+      obj.track.preview_url = element.preview_url;
+      addToLiked(obj);
+    }
+    span5.append(btn1);
+
     let span6 = document.createElement("span");
     span6.setAttribute("class", "song_duration");
     span6.innerText = millisToMinutesAndSeconds(element.duration_ms);
-    d7.append(span6);
+    d7.append(span5, span6);
     td4.append(d7);
     tr.append(td1, td2, td4);
 
@@ -149,6 +191,7 @@ async function displayData(albumID) {
 }
 
 function playMusic(index) {
+  curr_song_index = index;
   playing_img.src = local_obj.img;
   player_song_name.textContent = songs_array[index].name;
   player_artist_name.textContent = songs_array[index].artists[0].name;

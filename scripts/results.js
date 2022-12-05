@@ -36,6 +36,7 @@ curr_song.ontimeupdate = () => {
 }
 
 function updateMusic(index) {
+  curr_song_index = index;
   playing_img.src = songs_array[index].album.images[2].url;
   player_song_name.textContent = songs_array[index].name;
   player_artist_name.textContent = songs_array[index].artists[0].name;

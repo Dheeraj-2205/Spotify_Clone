@@ -18,6 +18,7 @@ const previous_button = document.querySelector("#previous_button");
 const next_button = document.querySelector('#next_button');
 const progress_bar = document.querySelector('#progress_bar');
 const curr_song_time = document.querySelector('#curr_song_time');
+let current_user = localStorage.getItem("spotify_current_user");
 let User_name = (localStorage.getItem("spotify_current_user")) || "";
 let banner = document.querySelector(".banner");
 let songs_body = document.querySelector("#songs_body");
@@ -75,10 +76,8 @@ const displayBanner = (data) => {
 }
 
 const displaySongs = (data) => {
-    console.log("data: " + data)
     songs_body.innerHTML = "";
     data.map((element, index) => {
-        console.log("element: " + element + index);
         let tr = document.createElement('tr');
         tr.setAttribute("class", "songRow");
 
@@ -111,7 +110,6 @@ const displaySongs = (data) => {
         d5.setAttribute("class", "song_artist");
         let span3 = document.createElement("span");
         span3.innerText = element.track.artists[0].name;
-        console.log(span3)
         d5.append(span3);
 
         d3.append(d4, d5);
@@ -136,7 +134,7 @@ const displaySongs = (data) => {
         let btn1 = document.createElement("button");
         btn1.setAttribute("Class", "heart_button");
         btn1.innerHTML = `<svg role="img" height="16" width="16" aria-hidden="true" viewBox="0 0 16 16" class="Svg-sc-ytk21e-0 uPxdw"><path d="M15.724 4.22A4.313 4.313 0 0012.192.814a4.269 4.269 0 00-3.622 1.13.837.837 0 01-1.14 0 4.272 4.272 0 00-6.21 5.855l5.916 7.05a1.128 1.128 0 001.727 0l5.916-7.05a4.228 4.228 0 00.945-3.577z"></path></svg>`;
-        btn1.addEventListener("click", function () { removelocalstrg(element, index) });
+        btn1.addEventListener("click", function () { removelocalstrg(data, index) });
         span5.append(btn1);
         let span6 = document.createElement("span");
         span6.setAttribute("class", "song_duration");
@@ -152,34 +150,23 @@ const displaySongs = (data) => {
         }
     });
 }
-let liked = JSON.parse(localStorage.getItem("liked")) || [];
-let removelocalstrg = (element, index) => {
-    liked.splice(index, 1);
-    localStorage.setItem("liked", JSON.stringify(liked));
-    if (liked.length > 0) {
+let removelocalstrg = (array, index) => {
+    array.splice(index, 1);
+    let user_array = JSON.parse(localStorage.getItem("spotify_liked_songs")) || {};
+    user_array[current_user] = array;
+    localStorage.setItem("spotify_liked_songs", JSON.stringify(user_array));
+    if (array.length > 0) {
         displayData();
     }
     else {
         window.location.reload();
     }
-
-    console.log(element + " :element and index: " + index);
 }
 
-// async function displayData(playlistID) {
-//     try {
-//         let data = await getTrack(playlistID, TOKEN);
-//         displayBanner(data.items);
-//         displaySongs(data.items);
-//         songs_array = [...data.items];
-//     } catch (error) {
-//         await refreshToken();
-//     }
-
-// }
-
 function displayData() {
-    liked = JSON.parse(localStorage.getItem("liked")) || [];
+    let user_array = JSON.parse(localStorage.getItem("spotify_liked_songs")) || {};
+    let liked = user_array[current_user] || [];
+    console.log(liked)
     displayBanner(liked);
     displaySongs(liked);
     songs_array = [...liked];
@@ -187,6 +174,7 @@ function displayData() {
 
 
 function playMusic(index) {
+    curr_song_index = index;
     playing_img.src = songs_array[index].track.album.images[2].url;
     player_song_name.textContent = songs_array[index].track.album.name;
     player_artist_name.textContent = songs_array[index].track.artists[0].name;
@@ -236,6 +224,7 @@ next_button.onclick = () => {
 }
 
 previous_button.onclick = () => {
+    console.log(curr_song_index)
     if (curr_song_index > 0) {
         playMusic(--curr_song_index);
         curr_song.play();
