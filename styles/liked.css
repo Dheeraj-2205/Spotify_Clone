@@ -1,3 +1,19 @@
+a[href="/index.html"] svg {
+    fill: #b3b3b3;
+}
+
+a[href="/index.html"] p {
+    color: #b3b3b3;
+}
+
+a[href="/pages/liked.html"] svg {
+    fill: white;
+}
+
+a[href="/pages/liked.html"] p {
+    color: white;
+}
+
 .heart_button:active {
     transform: scale(0.5);
     transition: transform ease 400ms;

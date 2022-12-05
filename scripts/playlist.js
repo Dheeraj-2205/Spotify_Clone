@@ -18,9 +18,12 @@ const previous_button = document.querySelector("#previous_button");
 const next_button = document.querySelector('#next_button');
 const progress_bar = document.querySelector('#progress_bar');
 const curr_song_time = document.querySelector('#curr_song_time');
+const like_playlist_button = document.querySelector("#like_playlist_button");
 let TOKEN = (localStorage.getItem("spotify_token")) || "";
 let local_obj = JSON.parse(localStorage.getItem("spotify_curr_playlist")) || "";
 let liked_songs = JSON.parse(localStorage.getItem("spotify_liked_songs")) || {};
+let liked_playlists = JSON.parse(localStorage.getItem("spotify_liked_playlists")) || {};
+let current_user = localStorage.getItem("spotify_current_user");
 let playlistID = local_obj.id;
 document.title = local_obj.name;
 let banner = document.querySelector(".banner");
@@ -178,6 +181,25 @@ async function displayData(playlistID) {
         displayBanner(data.items)
         displaySongs(data.items);
         songs_array = [...data.items];
+
+        like_playlist_button.onclick = () => {
+            let current_playlist = JSON.parse(localStorage.getItem("spotify_curr_playlist"));
+            
+            let array = liked_playlists[current_user];
+            if (array) {
+                let duplicate = array.filter(element => element.id == current_playlist.id);
+                if (duplicate.length == 0) {
+                    liked_playlists[current_user].push(current_playlist);
+                } else {
+                    alert("This playlist is already liked by you");
+                }
+            } else {
+                liked_playlists[current_user] = [];
+                liked_playlists[current_user].push(current_playlist);
+            }
+            localStorage.setItem("spotify_liked_playlists", JSON.stringify(liked_playlists));
+            
+        }
     } catch (error) {
         await refreshToken();
     }

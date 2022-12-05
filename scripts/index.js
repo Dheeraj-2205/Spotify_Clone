@@ -103,7 +103,7 @@ const showLoginPop = (background) => {
 
 const openPlayList = (obj) => {
   if (spotify_login_flag) {
-    localStorage.setItem("spotify_curr_playlist", JSON.stringify({name:obj.name, id:obj.id}));
+    localStorage.setItem("spotify_curr_playlist", JSON.stringify({name:obj.name, id:obj.id, desc:obj.description, image:obj.images[0].url}));
     location = '/pages/playlist.html';
   } else {
     showLoginPop(obj.images[0].url);

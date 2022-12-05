@@ -1,5 +1,5 @@
 import { left_nav, top_nav, loggedOutBottom, top_nav_login, playerBottom } from "../utils/components.js"
-import { refreshToken, getPlaylists } from "../utils/api_calls.js";
+import { refreshToken, getPlaylists, getCategoryPlaylists } from "../utils/api_calls.js";
 
 const catID = localStorage.getItem("catID");
 const TOKEN = localStorage.getItem('spotify_token') || '';
@@ -55,19 +55,6 @@ const displayPlaylist = (data, parent) => {
   });
 
 
-}
-
-//https://api.spotify.com/v1/browse/categories/0JQ5DAqbMKFHCxg5H5PtqW/playlists?country=IN&offset=0&limit=20
-
-async function getCategoryPlaylists(category, offset, limit, TOKEN) {
-  let response = await fetch(`https://api.spotify.com/v1/browse/categories/${category}/playlists?country=IN&offset=${offset}&limit=${limit}`, {
-    headers: {
-      "Authorization": `Bearer ${TOKEN}`,
-      "Content-Type": "application/json"
-    }
-  })
-  let data = await response.json();
-  return data.playlists.items;
 }
 
 let showCategoryPlaylists = async () => {

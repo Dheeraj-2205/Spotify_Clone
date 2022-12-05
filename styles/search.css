@@ -104,11 +104,11 @@
     width: 100%;
   }
 
-  a[href="search.html"] svg {
+  a[href="/pages/search.html"] svg {
     fill: white;
   }
   
-  a[href="search.html"] p {
+  a[href="/pages/search.html"] p {
     color: white;
   }
 

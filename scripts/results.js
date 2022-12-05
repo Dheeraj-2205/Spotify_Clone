@@ -209,7 +209,7 @@ const displayAllResults = (data) => {
     album_tab.append(album_avatar_container, album_name_container, album_desc);
 
     album_tab.onclick = () => {
-      localStorage.setItem("spotify_current_album", JSON.stringify({ name: element.name, id: element.id, img: element.images[0].url }));
+      localStorage.setItem("spotify_current_album", JSON.stringify({ name: element.name, id: element.id, img: element.images[0].url, desc: element.artists[0].name }));
       location = "album.html";
     };
 
@@ -306,7 +306,7 @@ const displayAlbumResult = (data) => {
     album_tab.append(album_avatar_container, album_name_container, album_desc);
 
     album_tab.onclick = () => {
-      localStorage.setItem("spotify_current_album", JSON.stringify({ name: element.name, id: element.id, img: element.images[0].url }));
+      localStorage.setItem("spotify_current_album", JSON.stringify({ name: element.name, id: element.id, img: element.images[0].url, desc: element.artists[0].name }));
       location = "album.html";
     };
 
@@ -340,7 +340,7 @@ const displayPlaylistResult = (data) => {
     playlist_tab.append(playlist_avatar_container, playlist_name_container, playlist_desc);
 
     playlist_tab.onclick = () => {
-      localStorage.setItem("spotify_curr_playlist", JSON.stringify({ name: element.name, id: element.id }));
+      localStorage.setItem("spotify_curr_playlist", JSON.stringify({name:element.name, id:element.id, desc:element.description, image:element.images[0].url}));
       location = "playlist.html";
     };
 

@@ -1,0 +1,13 @@
+#catName {
+  font-size: 5rem;
+  font-weight: 900;
+  letter-spacing: -0.1em;
+}
+
+.top_nav {
+  background-color: #131313;
+}
+
+.page_right {
+  background-image: linear-gradient(#131313, black);
+}

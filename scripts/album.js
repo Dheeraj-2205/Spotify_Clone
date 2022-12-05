@@ -30,6 +30,9 @@ let curr_song = new Audio("");
 let curr_song_index = 0;
 let user = localStorage.getItem("spotify_current_user");
 let liked_songs = JSON.parse(localStorage.getItem("spotify_liked_songs")) || {};
+const like_album_button = document.querySelector("#like_playlist_button");
+let current_user = localStorage.getItem("spotify_current_user");
+let liked_albums = JSON.parse(localStorage.getItem("spotify_liked_albums")) || {};
 
 const user_pop = document.querySelectorAll('.user_pop')[0];
 const user_options = document.querySelector('#user_options');
@@ -184,6 +187,26 @@ async function displayData(albumID) {
     displayBanner(data.items)
     displaySongs(data.items);
     songs_array = [...data.items];
+
+    like_album_button.onclick = () => {
+      let current_album = JSON.parse(localStorage.getItem("spotify_current_album"));
+
+      let array = liked_albums[current_user];
+      if (array) {
+        let duplicate = array.filter(element => element.id == current_album.id);
+        if (duplicate.length == 0) {
+          liked_albums[current_user].push(current_album);
+        } else {
+          alert("This album is already liked by you");
+        }
+      } else {
+        liked_albums[current_user] = [];
+        liked_albums[current_user].push(current_album);
+      }
+      localStorage.setItem("spotify_liked_albums", JSON.stringify(liked_albums));
+
+    }
+
   } catch (error) {
     await refreshToken();
   }

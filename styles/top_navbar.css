@@ -194,17 +194,25 @@
     height: 40px;
     font-size: 0.8rem;
   }
+
   .search_bar_container input {
     height: 10px;
   }
+
   .user_name {
     font-size: 0.8rem;
   }
 }
 
 @media (max-width: 650px) {
-  .top_nav_left>div:nth-child(1), .top_nav_left>div:nth-child(2) {
+
+  .top_nav_left>div:nth-child(1),
+  .top_nav_left>div:nth-child(2) {
     display: none;
+  }
+
+  .top_nav {
+    padding: 15px 0;
   }
 }
 

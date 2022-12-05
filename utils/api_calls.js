@@ -64,4 +64,15 @@ async function getAllSearchResults(query, type, limit, TOKEN) {
   return data;
 }
 
-export { refreshToken, getPlaylists, getTrack, getAllSearchResults, getAlbumTrack };
+async function getCategoryPlaylists(category, offset, limit, TOKEN) {
+  let response = await fetch(`https://api.spotify.com/v1/browse/categories/${category}/playlists?country=IN&offset=${offset}&limit=${limit}`, {
+    headers: {
+      "Authorization": `Bearer ${TOKEN}`,
+      "Content-Type": "application/json"
+    }
+  })
+  let data = await response.json();
+  return data.playlists.items;
+}
+
+export { refreshToken, getPlaylists, getTrack, getAllSearchResults, getAlbumTrack, getCategoryPlaylists };
