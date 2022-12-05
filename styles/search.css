@@ -127,6 +127,7 @@
   .page_bottom {
     grid-area: page_bottom;
     width: 100%;
+    background-color: #181818;
   }
 
   .page_right {
