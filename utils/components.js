@@ -39,7 +39,7 @@ return `
       </a>
     </div>
     <div>
-      <a href="your_library.html">
+      <a href="/pages/your_library.html">
         <div class="left_nav_icon_container">
           <svg role="img" height="24" width="24" aria-hidden="true" viewBox="0 0 24 24" fill="white">
             <path
