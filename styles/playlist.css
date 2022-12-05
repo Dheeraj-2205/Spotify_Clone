@@ -300,6 +300,7 @@ td:last-child {
   visibility: hidden;
   color: #7e948c;
   cursor: pointer;
+  transition: transform ease 400ms;
 }
 
 .songRow:hover .heart_button {
@@ -315,6 +316,11 @@ td:last-child {
   fill: currentcolor;
   height: 16px;
   width: 16px;
+}
+
+.heart_button:active {
+  transform: scale(1.5) rotateY(180deg);
+  transition: transform ease 400ms;
 }
 
 @media (max-width : 1550px) {

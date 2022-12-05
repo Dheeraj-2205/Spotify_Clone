@@ -1,21 +1,29 @@
-.liked_btn_duration{
+.heart_button:active {
+    transform: scale(0.5);
+    transition: transform ease 400ms;
+}
+
+.liked_btn_duration {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
-.liked_btn{
+
+.liked_btn {
     margin-right: 5px;
 }
-.song_duration{
+
+.song_duration {
     margin-left: 5px;
 }
-.heart_button{
-    visibility: visible !important;
- background-color: transparent !important;
- border-style: none !important;
-fill: #00f056 !important;
 
-cursor: pointer;
+.heart_button {
+    visibility: visible !important;
+    background-color: transparent !important;
+    border-style: none !important;
+    fill: #00f056 !important;
+
+    cursor: pointer;
 }
 
 .uPxdw {

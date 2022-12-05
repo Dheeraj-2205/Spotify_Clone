@@ -166,7 +166,6 @@ let removelocalstrg = (array, index) => {
 function displayData() {
     let user_array = JSON.parse(localStorage.getItem("spotify_liked_songs")) || {};
     let liked = user_array[current_user] || [];
-    console.log(liked)
     displayBanner(liked);
     displaySongs(liked);
     songs_array = [...liked];
@@ -224,7 +223,6 @@ next_button.onclick = () => {
 }
 
 previous_button.onclick = () => {
-    console.log(curr_song_index)
     if (curr_song_index > 0) {
         playMusic(--curr_song_index);
         curr_song.play();
