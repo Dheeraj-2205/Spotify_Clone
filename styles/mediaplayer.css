@@ -134,6 +134,8 @@
   fill: #b3b3b3;
   gap: 20px;
   transition: fill ease 300ms;
+  width: 300px;
+  justify-content: flex-end;
 }
 
 .player_right>div {
@@ -149,9 +151,10 @@
     width: 300px;
   }
 
-  .player_left {
+  .player_left, .player_right {
     width: auto;
   }
+
 }
 
 @media (max-width: 750px) {

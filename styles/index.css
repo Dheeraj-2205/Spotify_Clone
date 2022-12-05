@@ -209,6 +209,7 @@ a[href="/index.html"] p {
   outline: none;
   visibility: hidden;
   transition: transform ease 600ms, visibility ease 600ms;
+  cursor: pointer;
 }
 
 .playlist_tab:hover button {

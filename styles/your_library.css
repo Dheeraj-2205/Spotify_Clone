@@ -1,0 +1,128 @@
+#library-grid{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    width: 100%;
+    padding: 0 10px;
+    gap: 24px;
+    
+}
+#liked-section{
+    grid-row: 1;
+    grid-column: 1 / span 2;
+    background: linear-gradient(149.46deg,#450af5,#8e8ee5 99.16%);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all ease 400ms;
+    padding: 20px;
+    white-space: nowrap;
+    position: relative;
+}
+#liked-section::after{
+    min-height: 75%;
+}
+
+.play-btn-liked {
+    position: absolute;
+    bottom: 0px;
+    right: 20px;
+    background-color: transparent;
+    fill: transparent;
+    padding: 13px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform ease 50ms;
+    border: none;
+    outline: none;
+    visibility: hidden;
+    transition: transform ease 600ms, visibility ease 600ms;
+    cursor: pointer;
+  }
+  
+  #liked-section:hover button {
+    fill: black;
+    background-color: #1ed760;
+    /* bottom: 4px; */
+    transform: translateY(-15px);
+    visibility: visible;
+  }
+
+  a[href="/pages/your_library.html"] svg {
+    fill: white;
+  }
+  
+  a[href="/pages/your_library.html"] p {
+    color: white;
+  }
+
+  a[href="/index.html"] svg {
+    fill: #b3b3b3;
+  }
+  
+  a[href="/index.html"] p {
+    color: #b3b3b3;
+  }
+
+    /*--------------- Media queries ----------------*/
+
+    @media (max-width : 1670px) {
+        #library-grid{
+            grid-template-columns: repeat(6, minmax(0,1fr));
+        }
+      }
+      
+      @media (max-width : 1560px) {
+        #library-grid{
+            grid-template-columns: repeat(5, minmax(0,1fr));
+        }
+      }
+      @media (max-width : 1440px) {
+        #library-grid{
+            grid-template-columns: repeat(4, minmax(0,1fr));
+        }
+      }
+      
+      @media (max-width : 1300px) {
+        .left_nav {
+          width: 200px;
+        }
+      }
+    
+      @media (max-width : 1050px){
+        #library-grid{
+            grid-template-columns: repeat(3, minmax(0,1fr));
+        }
+      }
+      
+      @media (max-width : 900px) {
+        
+        .page_right {
+          height: calc(100vh - 155px);
+        }
+        .left_nav {
+          width: 60px;
+        }
+        .left_nav_title * {
+          color: #00000000 !important;
+        }
+        .left_nav_banner {
+          z-index: -1;
+          position: relative;
+          left: -7px;
+          
+        }
+      }
+    
+      
+      @media (max-width: 750px) {
+        #library-grid{
+            grid-template-columns: repeat(2, minmax(0,1fr));
+        }
+      }
+      
+      /* @media (max-width: 500px) {
+        #library-grid{
+            grid-template-columns: repeat(1, minmax(0,1fr));
+        }
+      } */
